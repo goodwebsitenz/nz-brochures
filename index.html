@@ -2,128 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NZ Brochures — Mockup Database</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NZ Business Brochures</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a0a0f;color:#e0e0e0;min-height:100vh}
-.container{max-width:1100px;margin:0 auto;padding:40px 24px}
-
-h1{font-size:2.5em;margin-bottom:8px;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:24px}
-
-.stats{display:flex;gap:32px;margin-bottom:40px;flex-wrap:wrap}
-.stat{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px 24px;text-align:center;min-width:120px}
-.stat .num{font-size:1.8em;font-weight:700;color:#a855f7}
-.stat .label{font-size:.8em;color:rgba(255,255,255,.4);margin-top:4px}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
-
-.card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px;transition:all .3s;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:.6}
-.card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.4);box-shadow:0 8px 30px rgba(0,0,0,.4)}
-
-.card .industry{font-size:.75em;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:8px}
-.card h2{font-size:1.15em;color:#fff;margin-bottom:8px;line-height:1.3}
-.card .phone{color:rgba(255,255,255,.5);font-size:.9em;margin-bottom:6px}
-.card .location{color:rgba(255,255,255,.3);font-size:.8em;margin-bottom:16px}
-.card .link{display:inline-block;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;padding:8px 20px;border-radius:20px;text-decoration:none;font-size:.85em;font-weight:500;transition:transform .2s}
-.card .link:hover{transform:scale(1.05)}
-
-footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04);margin-top:40px}
-footer p{font-size:.8em;color:rgba(255,255,255,.2)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b17;color:#fff;padding:40px 20px;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+h1{font-size:2em;background:linear-gradient(135deg,#6366f1,#d946ef);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px;text-align:center}
+.sub{color:rgba(255,255,255,.4);margin-bottom:8px;text-align:center}
+.meta{color:rgba(255,255,255,.25);font-size:.82em;margin-bottom:30px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;max-width:1000px;width:100%}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px;text-decoration:none;color:#fff;transition:all .3s}
+.card:hover{background:rgba(255,255,255,.08);transform:translateY(-3px);border-color:rgba(99,102,241,.3)}
+.card h3{font-size:1em;margin-bottom:4px;font-weight:600}
+.card .phone{color:rgba(255,255,255,.4);font-size:.82em;margin-bottom:6px}
+.tag{display:inline-block;background:rgba(99,102,241,.15);color:#818cf8;padding:2px 10px;border-radius:20px;font-size:.75em}
+.empty{color:rgba(255,255,255,.3);text-align:center;padding:40px}
 </style>
 </head>
 <body>
-<div class="container">
-<h1>📋 NZ Brochures Database</h1>
-<p class="subtitle">Complete archive of all brochure mockups — click any to view or share with a lead</p>
-
-<div class="stats">
-<div class="stat"><div class="num">9</div><div class="label">Brochures</div></div>
-<div class="stat"><div class="num" style="color:#22d3ee">5</div><div class="label">Locations</div></div>
-<div class="stat"><div class="num" style="color:#f59e0b">6</div><div class="label">Industries</div></div>
-</div>
-
-<div class="grid">
-
-<div class="card" style="--accent:#6366f1">
-<div class="industry" style="color:#6366f1">🖌️ Painting</div>
-<h2>Alex Painting</h2>
-<div class="phone">📞 022 158 1537</div>
-<div class="location">📍 Auckland CBD, Auckland</div>
-<a class="link" href="alex-painting/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#8b5cf6">
-<div class="industry" style="color:#8b5cf6">🔨 Joinery</div>
-<h2>Aspire Joinery Limited</h2>
-<div class="phone">📞 03 943 2900</div>
-<div class="location">📍 Wigram, Christchurch</div>
-<a class="link" href="aspire-joinery-limited/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#f97316">
-<div class="industry" style="color:#f97316">🏗️ Building & Construction</div>
-<h2>Cornerstone Builds Ltd</h2>
-<div class="phone">📞 027 512 6587</div>
-<div class="location">📍 New Lynn, Auckland</div>
-<a class="link" href="cornerstone-builds-ltd/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#c0842f">
-<div class="industry" style="color:#c0842f">🪑 Furniture & Kitchens</div>
-<h2>Ezi-Rest Furniture & Kitchens Made Ezi</h2>
-<div class="phone">📞 07 849 6710</div>
-<div class="location">📍 Te Rapa, Hamilton</div>
-<a class="link" href="ezi-rest-furniture-kitchens-made-ezi/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#22c55e">
-<div class="industry" style="color:#22c55e">🌿 Lawn & Garden</div>
-<h2>Green Lawns Hamilton</h2>
-<div class="phone">📞 027 889 0077</div>
-<div class="location">📍 Grandview Heights, Hamilton</div>
-<a class="link" href="green-lawns-hamilton/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#059669">
-<div class="industry" style="color:#059669">🌱 Lawn & Garden</div>
-<h2>Peacock Lawn and Garden Care</h2>
-<div class="phone">📞 022 071 2195</div>
-<div class="location">📍 Fitzroy, Hamilton</div>
-<a class="link" href="peacock-lawn-and-garden-care/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#06b6d4">
-<div class="industry" style="color:#06b6d4">🔧 Plumbing</div>
-<h2>Plumbing Solutions Wellington</h2>
-<div class="phone">📞 021 738 121</div>
-<div class="location">📍 Paparangi, Wellington</div>
-<a class="link" href="plumbing-solutions-wellington/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#d946ef">
-<div class="industry" style="color:#d946ef">🖌️ Painting</div>
-<h2>Tony Painters</h2>
-<div class="phone">📞 021 660 306</div>
-<div class="location">📍 Auckland CBD, Auckland</div>
-<a class="link" href="tony-painters/">View Brochure →</a>
-</div>
-
-<div class="card" style="--accent:#f59e0b">
-<div class="industry" style="color:#f59e0b">⚡ Electrical</div>
-<h2>Trevor Mangan Electrical</h2>
-<div class="phone">📞 022 673 5962</div>
-<div class="location">📍 Kilbirnie, Wellington</div>
-<a class="link" href="trevor-mangan-electrical/">View Brochure →</a>
-</div>
-
-</div>
-
-<footer>
-<p>© 2026 NZ Brochures Database — All mockups hosted on GitHub Pages</p>
-</footer>
+<h1>NZ Business Brochures</h1>
+<p class="sub">Professional brochure websites for local businesses</p>
+<p class="meta">Last updated: 26 June 2026 · 9 brochures</p>
+<div class="grid" id="grid">
+<a href="https://goodwebsitenz.github.io/nz-brochures/alex-painting/" class="card"><h3>Alex Painting</h3><p class="phone">022 158 1537</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/tony-painters/" class="card"><h3>Tony Painters</h3><p class="phone">021 660 306</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/cornerstone-builds-ltd/" class="card"><h3>Cornerstone Builds Ltd</h3><p class="phone">027 512 6587</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/aspire-joinery-limited/" class="card"><h3>Aspire Joinery Limited</h3><p class="phone">03 943 2900</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/green-lawns-hamilton/" class="card"><h3>Green Lawns Hamilton</h3><p class="phone">027 889 0077</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/peacock-lawn-and-garden-care/" class="card"><h3>Peacock Lawn and Garden Care</h3><p class="phone">022 071 2195</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/plumbing-solutions-wellington/" class="card"><h3>Plumbing Solutions Wellington</h3><p class="phone">021 738 121</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/trevor-mangan-electrical/" class="card"><h3>Trevor Mangan Electrical</h3><p class="phone">022 673 5962</p><span class="tag">View Brochure →</span></a>
+<a href="https://goodwebsitenz.github.io/nz-brochures/ezi-rest-furniture-kitchens-made-ezi/" class="card"><h3>Ezi-Rest Furniture & Kitchens Made Ezi</h3><p class="phone">07 849 6710</p><span class="tag">View Brochure →</span></a>
 </div>
 </body>
 </html>

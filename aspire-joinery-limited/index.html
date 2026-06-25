@@ -2,69 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aspire Joinery Limited | Carpenter in Christchurch</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Aspire Joinery Limited | Carpenter in Wigram, Christchurch</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0b08;color:#fff;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b17;color:#fff;overflow-x:hidden}
 
-#loader{position:fixed;inset:0;z-index:99999;background:#0f0b08;display:flex;align-items:center;justify-content:center;animation:fadeOut 0.5s ease 2s forwards;pointer-events:none}
+#loader{position:fixed;inset:0;z-index:99999;background:#0b0b17;display:flex;align-items:center;justify-content:center;animation:fadeOut .5s ease 2s forwards;pointer-events:none}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
-.loader-ring{width:40px;height:40px;border:2px solid rgba(255,255,255,.05);border-top-color:#b45309;border-radius:50%;animation:spin .8s linear infinite}
+.loader-ring{width:40px;height:40px;border:2px solid rgba(255,255,255,.05);border-top-color:#d97706;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
 nav .logo{font-size:1.2em;font-weight:700;color:#fff;text-decoration:none}
-nav .logo span{color:#b45309}
+nav .logo span{color:#d97706}
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85em;margin-left:20px;transition:color .3s}
 nav a:hover{color:#fff}
 
 section{padding:80px 24px}
 .section-inner{max-width:1100px;margin:0 auto}
-h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#b45309,#a16207);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#d97706,#a16207);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h3{font-size:1.2em;margin-bottom:8px;color:#fff}
 p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
 
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 30% 40%,rgba(180,83,9,.2),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(161,98,7,.1),transparent 60%),linear-gradient(135deg,#0f0b08,#241a10)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 40%,rgba(217,119,6,.35),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(161,98,7,.2),transparent 60%),linear-gradient(180deg,transparent 30%,#0b0b17 90%),url("images/hero5.jpg")center/cover no-repeat}
 #hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
 #hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
-.btn{display:inline-block;background:linear-gradient(135deg,#b45309,#a16207);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:transform .3s}
+.btn{display:inline-block;background:linear-gradient(135deg,#d97706,#a16207);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(217,119,6,.3);transition:transform .3s}
 .btn:hover{transform:scale(1.05)}
 
-#about{background:#0f0b08}
+#about{background:#0b0b17}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.about-image{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(135deg,#a16207,#b45309);opacity:.15;display:flex;align-items:center;justify-content:center;font-size:3em}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#d97706,#a16207)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
 
-.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;font-size:.8em;color:#b45309;margin-bottom:20px}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(217,119,6,.1);border:1px solid rgba(217,119,6,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#d97706;margin-bottom:20px}
 
-#services{background:#1a1410}
+#services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.services-grid{grid-template-columns:1fr}}
 .service-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px;text-align:center;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px);border-color:#b45309}
+.service-card:hover{transform:translateY(-4px);border-color:#d97706}
 .service-card .icon{font-size:2em;margin-bottom:12px}
 .service-card p{font-size:.85em;margin:0}
 
-#testimonials{background:#0f0b08}
+#testimonials{background:#0b0b17}
 .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.testimonial-grid{grid-template-columns:1fr}}
 .testimonial-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px}
 .testimonial-card .stars{color:#f59e0b;font-size:1.1em;margin-bottom:12px}
 .testimonial-card blockquote{color:rgba(255,255,255,.5);font-size:.9em;line-height:1.6;margin-bottom:16px;font-style:italic}
 .author{display:flex;align-items:center;gap:10px}
-.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#b45309,#a16207);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#d97706,#a16207);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
 .author-name{font-size:.85em;font-weight:600;color:#fff}
 .author-title{font-size:.75em;color:rgba(255,255,255,.4)}
 
-#contact{background:#1a1410}
+#contact{background:#151527}
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 .contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
 .contact-card .icon{font-size:2em;margin-bottom:12px}
-.contact-card a{color:#b45309;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card a{color:#d97706;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
 .contact-card p{font-size:.85em;margin:0}
 
 footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04)}
@@ -75,7 +75,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div id="loader"><div class="loader-ring"></div></div>
 
 <nav>
-<a href="#" class="logo">Aspire Joinery <span>✦</span></a>
+<a href="#" class="logo">Aspire <span>Joinery Limited</span></a>
 <div>
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -86,9 +86,10 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 
 <section id="hero">
 <div class="section-inner">
-<h1>Aspire Joinery Limited</h1>
-<p>Professional Carpenter in Christchurch serving your local community with quality workmanship and trusted service.</p>
-<a href="tel:03 943 2900" class="btn">📞 Call 03 943 2900</a>
+<div class="rating-badge">⭐ 5 · 1 reviews</div>
+<h1>Expert Carpenter Services<br>in Wigram, Christchurch</h1>
+<p>Professional carpenter serving Wigram, Christchurch and surrounding areas. Quality work guaranteed.</p>
+<a href="tel:039432900" class="btn">📞 Call 03 943 2900</a>
 </div>
 </section>
 
@@ -97,10 +98,13 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <h2>About Us</h2>
 <div class="about-grid">
 <div>
-<div class="rating-badge">⭐ 5.0/5 (1 reviews)</div>
-<p>Aspire Joinery Limited brings precision craftsmanship to every project. Based in Christchurch, we design, manufacture, and install custom cabinetry, kitchens, wardrobes, and joinery solutions. Using premium New Zealand timbers and modern materials, we create beautiful, functional spaces that stand the test of time.</p>
+<div class="rating-badge">⭐ 5 · 1 reviews</div>
+<p>Aspire Joinery Limited is a trusted carpenter serving Wigram, Christchurch and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
+<p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
-<div class="about-image"></div>
+<div class="about-image">
+<img src="images/about3.jpg" alt="Carpenter work in Wigram, Christchurch" loading="lazy">
+</div>
 </div>
 </div>
 </section>
@@ -108,11 +112,15 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="services">
 <div class="section-inner">
 <h2>Our Services</h2>
-<p class="subtitle">Custom joinery and cabinetry — designed and built for you</p>
+<p class="subtitle">Professional carpenter services you can count on.</p>
 <div class="services-grid">
-<div class="service-card"><div class="icon">🍳</div><h3>Kitchen Joinery</h3><p>Custom kitchen cabinetry designed to your exact specifications. Soft-close drawers, integrated handles, and premium benchtops.</p></div>
-<div class="service-card"><div class="icon">👔</div><h3>Wardrobes & Storage</h3><p>Walk-in robes, fitted wardrobes, and custom storage solutions. Maximise your space with smart, beautiful joinery.</p></div>
-<div class="service-card"><div class="icon">🪵</div><h3>Custom Furniture</h3><p>Built-in shelving, entertainment units, study nooks, and bespoke furniture pieces. Handcrafted in our Christchurch workshop.</p></div>
+<div class="service-card"><div class="icon">🪚</div><h3>Custom Furniture</h3><p>Bespoke furniture design and construction for any space or requirement.</p></div>
+<div class="service-card"><div class="icon">🔨</div><h3>Kitchen Cabinetry</h3><p>Custom kitchen cabinets and joinery with precision craftsmanship.</p></div>
+<div class="service-card"><div class="icon">🪑</div><h3>Decking & Outdoors</h3><p>Timber decks, outdoor structures, and garden features.</p></div>
+<div class="service-card"><div class="icon">🏠</div><h3>Interior Joinery</h3><p>Wardrobes, shelving, and custom interior joinery solutions.</p></div>
+<div class="service-card"><div class="icon">📏</div><h3>Trim & Moulding</h3><p>Architectural trim, skirting boards, architraves, and decorative mouldings.</p></div>
+<div class="service-card"><div class="icon">🛠️</div><h3>Renovations</h3><p>Carpentry for renovations including framing, lining, and finishing.</p></div>
+
 </div>
 </div>
 </section>
@@ -120,41 +128,46 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="testimonials">
 <div class="section-inner">
 <h2>What Our Clients Say</h2>
-<p class="subtitle">Real reviews from real customers</p>
+<p class="subtitle">Rated 5 stars on Google — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Aspire built our dream kitchen. The attention to detail in the cabinetry is outstanding — every drawer glides perfectly, every mitre is crisp."</blockquote><div class="author"><div class="author-avatar">RD</div><div><div class="author-name">Rachel D.</div><div class="author-title">Homeowner</div></div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"I've specified Aspire Joinery on multiple projects. Their craftsmanship is consistently excellent and they deliver on schedule."</blockquote><div class="author"><div class="author-avatar">MS</div><div><div class="author-name">Mark S.</div><div class="author-title">Architect</div></div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Custom wardrobes that exceeded my expectations. Beautiful materials, perfect fit, and the team left everything spotless."</blockquote><div class="author"><div class="author-avatar">KM</div><div><div class="author-name">Karen M.</div><div class="author-title">Homeowner</div></div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We've used several services over the years and none compare. Attention to detail, tidy worksite, and finished on time."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Wigram, Christchurch</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Wigram, Christchurch</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Wigram, Christchurch</div></div></div>
+
 </div>
 </div>
 </section>
 
 <section id="contact">
 <div class="section-inner">
-<h2>Get In Touch</h2>
-<p class="subtitle">Ready to get started? Reach out today</p>
+<h2>Get in Touch</h2>
+<p class="subtitle">Call, email — free no-obligation quotes.</p>
 <div class="contact-grid">
 <div class="contact-card">
 <div class="icon">📞</div>
-<a href="tel:03 943 2900">03 943 2900</a>
-<p>Call us for a free quote</p>
+<h3>Phone</h3>
+<a href="tel:039432900">03 943 2900</a>
+<p>Call or text anytime</p>
 </div>
 <div class="contact-card">
-<div class="icon">📧</div>
-<a href="mailto:info@aspirejoinery.co.nz">Email Us</a>
-<p>We'll get back to you fast</p>
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<a href="mailto:info@aspire-joinery-limited.co.nz">info@aspire-joinery-limited.co.nz</a>
+<p>We'll respond within 24h</p>
 </div>
 <div class="contact-card">
 <div class="icon">📍</div>
-<p style="color:rgba(255,255,255,.6);font-size:.95em;margin-bottom:4px;font-weight:600">Wigram, Christchurch</p>
-<p>Serving the local area</p>
+<h3>Location</h3>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Wigram, Christchurch</p>
+<p>Serving all of Wigram, Christchurch</p>
 </div>
 </div>
 </div>
 </section>
 
 <footer>
-<p>&copy; 2026 Aspire Joinery Limited. All rights reserved. | Wigram, Christchurch</p>
+<p>&copy; 2026 Aspire Joinery Limited — Wigram, Christchurch. All rights reserved.</p>
 </footer>
+
 </body>
 </html>

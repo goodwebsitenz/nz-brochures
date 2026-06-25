@@ -2,71 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ezi-Rest Furniture &amp; Kitchens Made Ezi | Carpenter in Hamilton</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ezi-Rest Furniture & Kitchens Made Ezi | Carpenter in Te Rapa, Hamilton</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0b08;color:#fff;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b17;color:#fff;overflow-x:hidden}
 
-#loader{position:fixed;inset:0;z-index:99999;background:#0f0b08;display:flex;align-items:center;justify-content:center;animation:fadeOut 0.5s ease 2s forwards;pointer-events:none}
+#loader{position:fixed;inset:0;z-index:99999;background:#0b0b17;display:flex;align-items:center;justify-content:center;animation:fadeOut .5s ease 2s forwards;pointer-events:none}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
-.loader-ring{width:40px;height:40px;border:2px solid rgba(255,255,255,.05);border-top-color:#c0842f;border-radius:50%;animation:spin .8s linear infinite}
+.loader-ring{width:40px;height:40px;border:2px solid rgba(255,255,255,.05);border-top-color:#d97706;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
 nav .logo{font-size:1.2em;font-weight:700;color:#fff;text-decoration:none}
-nav .logo span{color:#c0842f}
+nav .logo span{color:#d97706}
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85em;margin-left:20px;transition:color .3s}
 nav a:hover{color:#fff}
 
 section{padding:80px 24px}
 .section-inner{max-width:1100px;margin:0 auto}
-h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#c0842f,#78350f);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#d97706,#a16207);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h3{font-size:1.2em;margin-bottom:8px;color:#fff}
 p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
 
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 30% 40%,rgba(192,132,47,.2),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(120,53,15,.1),transparent 60%),linear-gradient(135deg,#0f0b08,#2a1f12)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 40%,rgba(217,119,6,.35),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(161,98,7,.2),transparent 60%),linear-gradient(180deg,transparent 30%,#0b0b17 90%),url("images/hero5.jpg")center/cover no-repeat}
 #hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
 #hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
-.btn{display:inline-block;background:linear-gradient(135deg,#c0842f,#78350f);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:transform .3s}
+.btn{display:inline-block;background:linear-gradient(135deg,#d97706,#a16207);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(217,119,6,.3);transition:transform .3s}
 .btn:hover{transform:scale(1.05)}
 
-#about{background:#0f0b08}
+#about{background:#0b0b17}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.about-image{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(135deg,#78350f,#c0842f);opacity:.15;display:flex;align-items:center;justify-content:center;font-size:3em}
-
-
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#d97706,#a16207)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
 
-.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;font-size:.8em;color:#c0842f;margin-bottom:20px}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(217,119,6,.1);border:1px solid rgba(217,119,6,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#d97706;margin-bottom:20px}
 
-#services{background:#1c140e}
+#services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.services-grid{grid-template-columns:1fr}}
 .service-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px;text-align:center;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px);border-color:#c0842f}
+.service-card:hover{transform:translateY(-4px);border-color:#d97706}
 .service-card .icon{font-size:2em;margin-bottom:12px}
 .service-card p{font-size:.85em;margin:0}
 
-#testimonials{background:#0f0b08}
+#testimonials{background:#0b0b17}
 .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.testimonial-grid{grid-template-columns:1fr}}
 .testimonial-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px}
 .testimonial-card .stars{color:#f59e0b;font-size:1.1em;margin-bottom:12px}
 .testimonial-card blockquote{color:rgba(255,255,255,.5);font-size:.9em;line-height:1.6;margin-bottom:16px;font-style:italic}
 .author{display:flex;align-items:center;gap:10px}
-.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#c0842f,#78350f);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#d97706,#a16207);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
 .author-name{font-size:.85em;font-weight:600;color:#fff}
 .author-title{font-size:.75em;color:rgba(255,255,255,.4)}
 
-#contact{background:#1c140e}
+#contact{background:#151527}
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 .contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
 .contact-card .icon{font-size:2em;margin-bottom:12px}
-.contact-card a{color:#c0842f;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card a{color:#d97706;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
 .contact-card p{font-size:.85em;margin:0}
 
 footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04)}
@@ -77,7 +75,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div id="loader"><div class="loader-ring"></div></div>
 
 <nav>
-<a href="#" class="logo">Ezi-Rest <span>✦</span></a>
+<a href="#" class="logo">Ezi-Rest <span>Furniture & Kitchens Made Ezi</span></a>
 <div>
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -88,9 +86,10 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 
 <section id="hero">
 <div class="section-inner">
-<h1>Ezi-Rest Furniture &amp; Kitchens Made Ezi</h1>
-<p>Professional Carpenter in Hamilton serving your local community with quality workmanship and trusted service.</p>
-<a href="tel:07 849 6710" class="btn">📞 Call 07 849 6710</a>
+<div class="rating-badge">⭐ 4.8 · 17 reviews</div>
+<h1>Expert Carpenter Services<br>in Te Rapa, Hamilton</h1>
+<p>Professional carpenter serving Te Rapa, Hamilton and surrounding areas. Quality work guaranteed.</p>
+<a href="tel:078496710" class="btn">📞 Call 07 849 6710</a>
 </div>
 </section>
 
@@ -99,10 +98,13 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <h2>About Us</h2>
 <div class="about-grid">
 <div>
-<div class="rating-badge">⭐ 4.8/5 (17 reviews)</div>
-<p>Ezi-Rest Furniture & Kitchens Made Ezi has been serving Hamilton for years with a strong 4.8-star reputation. We specialise in custom furniture, kitchen renovations, and cabinetry solutions. Our workshop crafts beautiful, functional pieces using quality New Zealand materials — from solid timber dining tables to fully fitted kitchens that transform your home.</p>
+<div class="rating-badge">⭐ 4.8 · 17 reviews</div>
+<p>Ezi-Rest Furniture & Kitchens Made Ezi is a trusted carpenter serving Te Rapa, Hamilton and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
+<p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
-<div class="about-image"></div>
+<div class="about-image">
+<img src="images/about3.jpg" alt="Carpenter work in Te Rapa, Hamilton" loading="lazy">
+</div>
 </div>
 </div>
 </section>
@@ -110,11 +112,15 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="services">
 <div class="section-inner">
 <h2>Our Services</h2>
-<p class="subtitle">Custom furniture and kitchen joinery — crafted in Hamilton</p>
+<p class="subtitle">Professional carpenter services you can count on.</p>
 <div class="services-grid">
-<div class="service-card"><div class="icon">🍳</div><h3>Kitchen Renovations</h3><p>Complete kitchen design, manufacture, and installation. Custom cabinetry, benchtops, splashbacks, and hardware. We handle everything from demolition to final fit-out.</p></div>
-<div class="service-card"><div class="icon">🪑</div><h3>Custom Furniture</h3><p>Bespoke tables, chairs, cabinets, entertainment units, and built-in storage. Handcrafted to your specifications in our local workshop.</p></div>
-<div class="service-card"><div class="icon">🔨</div><h3>Cabinetry & Joinery</h3><p>Custom cabinetry for every room — laundry, bathroom, office, and wardrobe. Precision-made with premium materials and finishes.</p></div>
+<div class="service-card"><div class="icon">🪚</div><h3>Custom Furniture</h3><p>Bespoke furniture design and construction for any space or requirement.</p></div>
+<div class="service-card"><div class="icon">🔨</div><h3>Kitchen Cabinetry</h3><p>Custom kitchen cabinets and joinery with precision craftsmanship.</p></div>
+<div class="service-card"><div class="icon">🪑</div><h3>Decking & Outdoors</h3><p>Timber decks, outdoor structures, and garden features.</p></div>
+<div class="service-card"><div class="icon">🏠</div><h3>Interior Joinery</h3><p>Wardrobes, shelving, and custom interior joinery solutions.</p></div>
+<div class="service-card"><div class="icon">📏</div><h3>Trim & Moulding</h3><p>Architectural trim, skirting boards, architraves, and decorative mouldings.</p></div>
+<div class="service-card"><div class="icon">🛠️</div><h3>Renovations</h3><p>Carpentry for renovations including framing, lining, and finishing.</p></div>
+
 </div>
 </div>
 </section>
@@ -122,41 +128,46 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="testimonials">
 <div class="section-inner">
 <h2>What Our Clients Say</h2>
-<p class="subtitle">Real reviews from real customers</p>
+<p class="subtitle">Rated 4.8 stars on Google — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<blockquote>"Ezi-Rest built our dream kitchen. The cabinetry is stunning — solid, beautifully finished, and the team was a pleasure to deal with."</blockquote>
-<div class="author"><div class="author-avatar">PJ</div><div><div class="author-name">Patricia J.</div><div class="author-title">Homeowner</div></div></div>
-</div>
-<div class="testimonial-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<blockquote>"Custom dining table and chairs that are absolute heirlooms. The craftsmanship is outstanding and it was made right here in Hamilton."</blockquote>
-<div class="author"><div class="author-avatar">WH</div><div><div class="author-name">Wayne H.</div><div class="author-title">Homeowner</div></div></div>
-</div>
-<div class="testimonial-card">
-<div class="stars">⭐⭐⭐⭐⭐</div>
-<blockquote>"Complete laundry renovation with custom cabinetry. Transformed the space completely. Excellent workmanship and fair pricing."</blockquote>
-<div class="author"><div class="author-avatar">SB</div><div><div class="author-name">Sandra B.</div><div class="author-title">Homeowner</div></div></div>
-</div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled with the result. The team was professional, punctual, and the quality exceeded our expectations. Would highly recommend to anyone in Te Rapa, Hamilton."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">Te Rapa, Hamilton</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Te Rapa, Hamilton</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication, fair pricing, and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Te Rapa, Hamilton</div></div></div>
+
 </div>
 </div>
 </section>
 
 <section id="contact">
 <div class="section-inner">
-<h2>Get In Touch</h2>
-<p class="subtitle">Ready to get started? Reach out today</p>
+<h2>Get in Touch</h2>
+<p class="subtitle">Call, email — free no-obligation quotes.</p>
 <div class="contact-grid">
-<div class="contact-card"><div class="icon">📞</div><a href="tel:07 849 6710">07 849 6710</a><p>Call us for a free quote</p></div>
-<div class="contact-card"><div class="icon">📧</div><a href="mailto:ezi.rest@example.com">Email Us</a><p>We'll get back to you fast</p></div>
-<div class="contact-card"><div class="icon">📍</div><p style="color:#c0842f;font-size:1.1em;font-weight:600;margin-bottom:8px">Te Rapa, Hamilton</p><p>Serving the local area</p></div>
+<div class="contact-card">
+<div class="icon">📞</div>
+<h3>Phone</h3>
+<a href="tel:078496710">07 849 6710</a>
+<p>Call or text anytime</p>
+</div>
+<div class="contact-card">
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<a href="mailto:info@ezi-rest-furniture-kitchens-made-ezi.co.nz">info@ezi-rest-furniture-kitchens-made-ezi.co.nz</a>
+<p>We'll respond within 24h</p>
+</div>
+<div class="contact-card">
+<div class="icon">📍</div>
+<h3>Location</h3>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Te Rapa, Hamilton</p>
+<p>Serving all of Te Rapa, Hamilton</p>
+</div>
 </div>
 </div>
 </section>
 
 <footer>
-<p>© 2026 Ezi-Rest Furniture & Kitchens Made Ezi. All rights reserved. | Te Rapa, Hamilton</p>
+<p>&copy; 2026 Ezi-Rest Furniture & Kitchens Made Ezi — Te Rapa, Hamilton. All rights reserved.</p>
 </footer>
+
 </body>
 </html>

@@ -2,49 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alex Painting | Painter in Auckland</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alex Painting | Painter in Auckland CBD, Auckland</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b17;color:#fff;overflow-x:hidden}
 
-#loader{position:fixed;inset:0;z-index:99999;background:#0b0b17;display:flex;align-items:center;justify-content:center;animation:fadeOut 0.5s ease 2s forwards;pointer-events:none}
+#loader{position:fixed;inset:0;z-index:99999;background:#0b0b17;display:flex;align-items:center;justify-content:center;animation:fadeOut .5s ease 2s forwards;pointer-events:none}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
-.loader-ring{width:40px;height:40px;border:2px solid rgba(255,255,255,.05);border-top-color:#6366f1;border-radius:50%;animation:spin .8s linear infinite}
+.loader-ring{width:40px;height:40px;border:2px solid rgba(255,255,255,.05);border-top-color:#818cf8;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
 nav .logo{font-size:1.2em;font-weight:700;color:#fff;text-decoration:none}
-nav .logo span{color:#6366f1}
+nav .logo span{color:#818cf8}
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85em;margin-left:20px;transition:color .3s}
 nav a:hover{color:#fff}
 
 section{padding:80px 24px}
 .section-inner{max-width:1100px;margin:0 auto}
-h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#6366f1,#d946ef);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h3{font-size:1.2em;margin-bottom:8px;color:#fff}
 p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
 
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 30% 40%,rgba(99,102,241,.2),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(217,70,239,.1),transparent 60%),linear-gradient(135deg,#0b0b17,#1e1e3a)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 40%,rgba(129,140,248,.35),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(192,132,252,.2),transparent 60%),linear-gradient(180deg,transparent 30%,#0b0b17 90%),url("images/hero3.jpg")center/cover no-repeat}
 #hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
 #hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
-.btn{display:inline-block;background:linear-gradient(135deg,#6366f1,#d946ef);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:transform .3s}
+.btn{display:inline-block;background:linear-gradient(135deg,#818cf8,#c084fc);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(129,140,248,.3);transition:transform .3s}
 .btn:hover{transform:scale(1.05)}
 
 #about{background:#0b0b17}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.about-image{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(135deg,#d946ef,#6366f1);opacity:.15;display:flex;align-items:center;justify-content:center;font-size:3em}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#818cf8,#c084fc)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
 
-.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;font-size:.8em;color:#6366f1;margin-bottom:20px}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#818cf8;margin-bottom:20px}
 
 #services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.services-grid{grid-template-columns:1fr}}
 .service-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px;text-align:center;transition:transform .3s}
-.service-card:hover{transform:translateY(-4px);border-color:#6366f1}
+.service-card:hover{transform:translateY(-4px);border-color:#818cf8}
 .service-card .icon{font-size:2em;margin-bottom:12px}
 .service-card p{font-size:.85em;margin:0}
 
@@ -55,7 +55,7 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .testimonial-card .stars{color:#f59e0b;font-size:1.1em;margin-bottom:12px}
 .testimonial-card blockquote{color:rgba(255,255,255,.5);font-size:.9em;line-height:1.6;margin-bottom:16px;font-style:italic}
 .author{display:flex;align-items:center;gap:10px}
-.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#d946ef);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
 .author-name{font-size:.85em;font-weight:600;color:#fff}
 .author-title{font-size:.75em;color:rgba(255,255,255,.4)}
 
@@ -64,7 +64,7 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 .contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
 .contact-card .icon{font-size:2em;margin-bottom:12px}
-.contact-card a{color:#6366f1;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card a{color:#818cf8;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
 .contact-card p{font-size:.85em;margin:0}
 
 footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04)}
@@ -75,7 +75,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div id="loader"><div class="loader-ring"></div></div>
 
 <nav>
-<a href="#" class="logo">Alex Painting <span>✦</span></a>
+<a href="#" class="logo">Alex <span>Painting</span></a>
 <div>
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -86,9 +86,10 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 
 <section id="hero">
 <div class="section-inner">
-<h1>Alex Painting</h1>
-<p>Professional Painter in Auckland serving your local community with quality workmanship and trusted service.</p>
-<a href="tel:022 158 1537" class="btn">📞 Call 022 158 1537</a>
+<div class="rating-badge">⭐ 4.9 · 7 reviews</div>
+<h1>Expert Painter Services<br>in Auckland CBD, Auckland</h1>
+<p>Professional painter serving Auckland CBD, Auckland and surrounding areas. Quality work guaranteed.</p>
+<a href="tel:0221581537" class="btn">📞 Call 022 158 1537</a>
 </div>
 </section>
 
@@ -97,10 +98,13 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <h2>About Us</h2>
 <div class="about-grid">
 <div>
-<div class="rating-badge">⭐ 4.9/5 (7 reviews)</div>
-<p>Alex Painting brings colour and quality to every project. With years of experience across residential and commercial painting, our team delivers flawless finishes with attention to detail. We use premium paints and modern techniques to transform your space — whether it's a single room refresh or a full exterior makeover.</p>
+<div class="rating-badge">⭐ 4.9 · 7 reviews</div>
+<p>Alex Painting is a trusted painter serving Auckland CBD, Auckland and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
+<p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
-<div class="about-image"></div>
+<div class="about-image">
+<img src="images/about7.jpg" alt="Painter work in Auckland CBD, Auckland" loading="lazy">
+</div>
 </div>
 </div>
 </section>
@@ -108,11 +112,15 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="services">
 <div class="section-inner">
 <h2>Our Services</h2>
-<p class="subtitle">Professional painting services for homes and businesses</p>
+<p class="subtitle">Professional painter services you can count on.</p>
 <div class="services-grid">
-<div class="service-card"><div class="icon">🎨</div><h3>Interior Painting</h3><p>Full interior painting including walls, ceilings, trim, and cabinetry. Colour consultation available to help you choose the perfect palette.</p></div>
-<div class="service-card"><div class="icon">🏠</div><h3>Exterior Painting</h3><p>Weatherboard, brick, plaster, and metal surfaces. We prep, prime, and paint for long-lasting curb appeal.</p></div>
-<div class="service-card"><div class="icon">🔧</div><h3>Residential & Commercial</h3><p>From small apartments to large office complexes. No job is too big or too small for our experienced crew.</p></div>
+<div class="service-card"><div class="icon">🎨</div><h3>Interior Painting</h3><p>Professional interior painting for walls, ceilings, and trim using premium paints and careful preparation.</p></div>
+<div class="service-card"><div class="icon">🏠</div><h3>Exterior Painting</h3><p>Weather-resistant exterior painting that protects and beautifies your home with durable, long-lasting finishes.</p></div>
+<div class="service-card"><div class="icon">🖼️</div><h3>Wallpaper & Finishes</h3><p>Expert wallpaper installation, removal, and decorative finishes for any room.</p></div>
+<div class="service-card"><div class="icon">✨</div><h3>Spray Painting</h3><p>Efficient spray painting for cabinets, fences, and large surface areas with smooth, even coverage.</p></div>
+<div class="service-card"><div class="icon">🏢</div><h3>Commercial Painting</h3><p>Full commercial painting services for offices, retail spaces, and industrial properties.</p></div>
+<div class="service-card"><div class="icon">🎯</div><h3>Colour Consultation</h3><p>Professional colour advice to help you choose the perfect palette for your space.</p></div>
+
 </div>
 </div>
 </section>
@@ -120,41 +128,46 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="testimonials">
 <div class="section-inner">
 <h2>What Our Clients Say</h2>
-<p class="subtitle">Real reviews from real customers</p>
+<p class="subtitle">Rated 4.9 stars on Google — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Alex painted our entire house inside and out. The transformation is incredible — meticulous prep work and beautiful finish. Highly recommend!"</blockquote><div class="author"><div class="author-avatar">SM</div><div><div class="author-name">Sarah M.</div><div class="author-title">Homeowner</div></div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We've used Alex Painting for multiple rental properties. Consistent quality, on-time, and great communication throughout."</blockquote><div class="author"><div class="author-avatar">JT</div><div><div class="author-name">James T.</div><div class="author-title">Property Manager</div></div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They colour-matched our heritage trims perfectly and left the site spotless every day."</blockquote><div class="author"><div class="author-avatar">EL</div><div><div class="author-name">Emma L.</div><div class="author-title">Homeowner</div></div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We've used several services over the years and none compare. Attention to detail, tidy worksite, and finished on time."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Auckland CBD, Auckland</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Auckland CBD, Auckland</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Couldn't be happier. Fair pricing, excellent communication, and the finished product looks amazing. Will definitely use again."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">Auckland CBD, Auckland</div></div></div>
+
 </div>
 </div>
 </section>
 
 <section id="contact">
 <div class="section-inner">
-<h2>Get In Touch</h2>
-<p class="subtitle">Ready to get started? Reach out today</p>
+<h2>Get in Touch</h2>
+<p class="subtitle">Call, email — free no-obligation quotes.</p>
 <div class="contact-grid">
 <div class="contact-card">
 <div class="icon">📞</div>
-<a href="tel:022 158 1537">022 158 1537</a>
-<p>Call us for a free quote</p>
+<h3>Phone</h3>
+<a href="tel:0221581537">022 158 1537</a>
+<p>Call or text anytime</p>
 </div>
 <div class="contact-card">
-<div class="icon">📧</div>
-<a href="mailto:info@alexpainting.co.nz">Email Us</a>
-<p>We'll get back to you fast</p>
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<a href="mailto:info@alex-painting.co.nz">info@alex-painting.co.nz</a>
+<p>We'll respond within 24h</p>
 </div>
 <div class="contact-card">
 <div class="icon">📍</div>
-<p style="color:rgba(255,255,255,.6);font-size:.95em;margin-bottom:4px;font-weight:600">Auckland CBD, Auckland</p>
-<p>Serving the local area</p>
+<h3>Location</h3>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Auckland CBD, Auckland</p>
+<p>Serving all of Auckland CBD, Auckland</p>
 </div>
 </div>
 </div>
 </section>
 
 <footer>
-<p>&copy; 2026 Alex Painting. All rights reserved. | Auckland CBD, Auckland</p>
+<p>&copy; 2026 Alex Painting — Auckland CBD, Auckland. All rights reserved.</p>
 </footer>
+
 </body>
 </html>
