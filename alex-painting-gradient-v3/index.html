@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alex Painting | Painter in Auckland CBD</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b17;color:#fff;overflow-x:hidden}
+
+/* ── BRUSH STROKE LOADER ── */
+#loader{position:fixed;inset:0;z-index:99999;background:#0b0b17;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px}
+.loader-text{font-size:.85em;color:rgba(255,255,255,.3);letter-spacing:4px;text-transform:uppercase}
+.brush-load{width:200px;height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden;position:relative}
+.brush-load::after{content:'';position:absolute;top:0;left:-40%;width:40%;height:100%;border-radius:4px;background:linear-gradient(90deg,transparent,#818cf8,#c084fc,transparent);animation:brushSweep 1.8s ease-in-out infinite}
+@keyframes brushSweep{0%{left:-40%}100%{left:100%}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+#loader.done{animation:fadeOut .6s ease .3s forwards}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);opacity:0;animation:fadeSlideDown .8s ease 1s forwards}
+@keyframes fadeSlideDown{to{opacity:1;transform:translateY(0)}}
+nav .logo{font-size:1.2em;font-weight:700;color:#fff;text-decoration:none}
+nav .logo span{color:#818cf8}
+nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.85em;margin-left:20px;transition:color .3s}
+nav a:hover{color:#fff}
+
+section{padding:80px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h3{font-size:1.2em;margin-bottom:8px;color:#fff}
+p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
+.subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#19193a 30%,#1a1040 60%,#0b0b17 100%)}
+
+/* Brush stroke SVG background */
+.brush-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.brush-bg svg{position:absolute;width:100%;height:100%}
+
+/* Animated gradient orbs */
+#hero::before{content:'';position:absolute;width:80vw;height:80vw;top:-30%;left:-20%;background:radial-gradient(circle,rgba(129,140,248,.25) 0%,transparent 65%);border-radius:50%;pointer-events:none;animation:orb1 18s ease-in-out infinite}
+#hero::after{content:'';position:absolute;width:60vw;height:60vw;bottom:-20%;right:-15%;background:radial-gradient(circle,rgba(192,132,252,.2) 0%,rgba(236,72,153,.1) 40%,transparent 65%);border-radius:50%;pointer-events:none;animation:orb2 22s ease-in-out infinite}
+@keyframes orb1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,20px) scale(.95)}}
+@keyframes orb2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-40px,30px) scale(1.05)}66%{transform:translate(30px,-40px) scale(.9)}}
+
+/* ── PAINT REVEAL ANIMATION ── */
+/* The hero content starts hidden, then gets "painted" in */
+.hero-content{position:relative;z-index:2}
+.paint-reveal{position:relative;display:inline-block}
+
+/* Each element reveals with a paint-swipe effect */
+.paint-reveal .rating-badge{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 1.2s forwards;transform-origin:left}
+.paint-reveal h1{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 1.5s forwards;transform-origin:left}
+.paint-reveal p{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 1.8s forwards;transform-origin:left}
+.paint-reveal .btn{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 2.1s forwards;transform-origin:left}
+
+@keyframes paintIn{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-20px)}100%{opacity:1;clip-path:inset(0 0 0 0);transform:translateX(0)}}
+
+/* Paint drip decorations that animate in */
+.drip{position:absolute;width:4px;height:80px;border-radius:0 0 4px 4px;pointer-events:none;opacity:0}
+.drip1{left:10%;top:-20px;background:linear-gradient(to bottom,#818cf8,transparent);animation:dripFall 2s ease 2.5s forwards}
+.drip2{left:50%;top:-60px;background:linear-gradient(to bottom,#c084fc,transparent);animation:dripFall 2.5s ease 2.8s forwards}
+.drip3{right:15%;top:-40px;background:linear-gradient(to bottom,#818cf8,transparent);animation:dripFall 1.8s ease 3s forwards height .8s}
+@keyframes dripFall{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(calc(100vh + 60px))}}
+
+#hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
+#hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;background:linear-gradient(135deg,#818cf8,#c084fc);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(129,140,248,.3);transition:transform .3s}
+.btn:hover{transform:scale(1.05)}
+
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#0b0b17,transparent);pointer-events:none;z-index:1}
+
+/* ── ABOUT ── */
+#about{background:#0b0b17}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#818cf8,#c084fc)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
+
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#818cf8;margin-bottom:20px}
+
+/* ── SERVICES ── */
+#services{background:#151527}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.services-grid{grid-template-columns:1fr}}
+.service-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px;text-align:center;transition:transform .3s}
+.service-card:hover{transform:translateY(-4px);border-color:#818cf8}
+.service-card .icon{font-size:2em;margin-bottom:12px}
+.service-card p{font-size:.85em;margin:0}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:#0b0b17}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.testimonial-grid{grid-template-columns:1fr}}
+.testimonial-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px}
+.testimonial-card .stars{color:#f59e0b;font-size:1.1em;margin-bottom:12px}
+.testimonial-card blockquote{color:rgba(255,255,255,.5);font-size:.9em;line-height:1.6;margin-bottom:16px;font-style:italic}
+.author{display:flex;align-items:center;gap:10px}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#818cf8,#c084fc);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
+.author-name{font-size:.85em;font-weight:600;color:#fff}
+.author-title{font-size:.75em;color:rgba(255,255,255,.4)}
+
+/* ── CONTACT ── */
+#contact{background:#151527}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
+.contact-card .icon{font-size:2em;margin-bottom:12px}
+.contact-card a{color:#818cf8;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card p{font-size:.85em;margin:0}
+
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04)}
+footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- BRUSH STROKE LOADER -->
+<div id="loader">
+  <div class="brush-load"></div>
+  <div class="loader-text">Brushing in...</div>
+</div>
+
+<nav>
+<a href="#" class="logo">Alex <span>Painting</span></a>
+<div>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#testimonials">Reviews</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Brush stroke SVG background -->
+  <div class="brush-bg">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main sweeping brush strokes -->
+      <path d="M-100,200 Q200,150 400,220 T700,180 T1000,240 T1500,160" 
+            fill="none" stroke="rgba(129,140,248,.12)" stroke-width="40" stroke-linecap="round">
+        <animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="2.5s" begin=".5s" fill="freeze"/>
+      </path>
+      <path d="M-100,500 Q300,420 600,520 T1100,460 T1500,510" 
+            fill="none" stroke="rgba(192,132,252,.1)" stroke-width="60" stroke-linecap="round">
+        <animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="3s" begin=".8s" fill="freeze"/>
+      </path>
+      <path d="M200,700 Q500,630 800,720 T1400,680" 
+            fill="none" stroke="rgba(129,140,248,.08)" stroke-width="30" stroke-linecap="round">
+        <animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="2s" begin="1s" fill="freeze"/>
+      </path>
+      <!-- Thick textural strokes -->
+      <path d="M0,300 Q150,280 300,320 T600,290 T900,340 T1200,280" 
+            fill="none" stroke="rgba(192,132,252,.06)" stroke-width="80" stroke-linecap="round" stroke-linejoin="round">
+        <animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="3.5s" begin=".3s" fill="freeze"/>
+      </path>
+      <!-- Quick flicks/splatter -->
+      <path d="M900,150 Q950,120 980,160" fill="none" stroke="rgba(129,140,248,.15)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M1100,550 Q1150,520 1180,560" fill="none" stroke="rgba(192,132,252,.12)" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="980" cy="165" r="6" fill="rgba(129,140,248,.1)"/>
+      <circle cx="960" cy="145" r="4" fill="rgba(129,140,248,.08)"/>
+      <circle cx="1180" cy="565" r="5" fill="rgba(192,132,252,.1)"/>
+      <circle cx="1160" cy="540" r="3" fill="rgba(192,132,252,.08)"/>
+    </svg>
+  </div>
+
+  <div class="drip drip1"></div>
+  <div class="drip drip2"></div>
+  <div class="drip drip3"></div>
+
+  <div class="hero-content paint-reveal">
+    <div class="rating-badge">⭐ 4.9 · 7 reviews</div>
+    <h1>Expert Painter Services<br>in Auckland CBD, Auckland</h1>
+    <p>Professional painter serving Auckland CBD, Auckland and surrounding areas. Quality work guaranteed.</p>
+    <a href="tel:0221581537" class="btn">📞 Call 022 158 1537</a>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="section-inner reveal">
+<h2>About Us</h2>
+<div class="about-grid">
+<div>
+<div class="rating-badge">⭐ 4.9 · 7 reviews</div>
+<p>Alex Painting is a trusted painter serving Auckland CBD, Auckland and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
+<p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
+</div>
+<div class="about-image">
+<img src="images/about7.jpg" alt="Painter work in Auckland CBD, Auckland" loading="lazy">
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="section-inner reveal">
+<h2>Our Services</h2>
+<p class="subtitle">Professional painter services you can count on.</p>
+<div class="services-grid">
+<div class="service-card"><div class="icon">🎨</div><h3>Interior Painting</h3><p>Professional interior painting for walls, ceilings, and trim using premium paints and careful preparation.</p></div>
+<div class="service-card"><div class="icon">🏠</div><h3>Exterior Painting</h3><p>Weather-resistant exterior painting that protects and beautifies your home with durable, long-lasting finishes.</p></div>
+<div class="service-card"><div class="icon">🖼️</div><h3>Wallpaper & Finishes</h3><p>Expert wallpaper installation, removal, and decorative finishes for any room.</p></div>
+<div class="service-card"><div class="icon">✨</div><h3>Spray Painting</h3><p>Efficient spray painting for cabinets, fences, and large surface areas with smooth, even coverage.</p></div>
+<div class="service-card"><div class="icon">🏢</div><h3>Commercial Painting</h3><p>Full commercial painting services for offices, retail spaces, and industrial properties.</p></div>
+<div class="service-card"><div class="icon">🎯</div><h3>Colour Consultation</h3><p>Professional colour advice to help you choose the perfect palette for your space.</p></div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+<div class="section-inner reveal">
+<h2>What Our Clients Say</h2>
+<p class="subtitle">Rated 4.9 stars on Google — here's what people are saying.</p>
+<div class="testimonial-grid">
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Auckland CBD, Auckland</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We've used several services over the years and none compare. Attention to detail, tidy worksite, and finished on time."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">Auckland CBD, Auckland</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled with the result. The team was professional, punctual, and the quality exceeded our expectations. Would highly recommend to anyone in Auckland CBD, Auckland."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Auckland CBD, Auckland</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-inner reveal">
+<h2>Get in Touch</h2>
+<p class="subtitle">Call, email — free no-obligation quotes.</p>
+<div class="contact-grid">
+<div class="contact-card">
+<div class="icon">📞</div>
+<h3>Phone</h3>
+<a href="tel:0221581537">022 158 1537</a>
+<p>Call or text anytime</p>
+</div>
+<div class="contact-card">
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<a href="mailto:info@alex-painting.co.nz">info@alex-painting.co.nz</a>
+<p>We'll respond within 24h</p>
+</div>
+<div class="contact-card">
+<div class="icon">📍</div>
+<h3>Location</h3>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Auckland CBD, Auckland</p>
+<p>Serving all of Auckland CBD, Auckland</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 Alex Painting — Auckland CBD, Auckland. All rights reserved.</p>
+</footer>
+
+<script>
+// Hide loader
+setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
+
+// Scroll reveal observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
