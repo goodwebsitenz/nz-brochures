@@ -17,37 +17,78 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 @keyframes brushSweep{0%{left:-40%}100%{left:100%}}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
 #loader.done{animation:fadeOut .6s ease .3s forwards}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;flex-direction:column;align-items:center;padding:12px 16px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);opacity:0;animation:fadeSlideDown .8s ease 1s forwards}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;flex-direction:column;align-items:center;padding:12px 16px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);opacity:0;animation:fadeSlideDown .8s ease 1.8s forwards}
 @keyframes fadeSlideDown{to{opacity:1;transform:translateY(0)}}
 nav .logo{font-size:1.1em;font-weight:700;color:#fff;text-decoration:none}
 nav .logo span{color:#fb923c}
 nav div{display:flex;justify-content:center;flex-wrap:wrap;gap:2px 6px;margin-top:4px}
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82em;padding:4px 8px;white-space:nowrap;transition:color .3s}
 nav a:hover{color:#fff}
+
+/* ── HERO - STATIC GRADIENT BACKGROUND ── */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#19193a 30%,#1a1040 60%,#0b0b17 100%)}
+
+/* Static gradient orbs - industry coloured */
+#hero::before{content:'';position:absolute;width:90vw;height:90vw;top:-30%;left:-25%;background:radial-gradient(circle,rgba(251,146,60,.2) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+#hero::after{content:'';position:absolute;width:70vw;height:70vw;bottom:-25%;right:-20%;background:radial-gradient(circle,rgba(167,139,250,.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+
+/* Subtle grid overlay */
+.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:80px 80px;z-index:0}
+
+/* ── DRAMATIC WASH-IN REVEAL OVERLAY ── */
+.wash-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(251,146,60,.3),rgba(167,139,250,.15),#0b0b17);z-index:2;pointer-events:none;clip-path:inset(0 0 0 0);animation:washReveal 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
+@keyframes washReveal{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(100% 0 0 0)}}
+
+/* ── CONTENT ENTRANCE ANIMATIONS ── */
+.hero-content{position:relative;z-index:3}
+
+/* Industry emoji - dramatic entrance */
+.hero-icon{font-size:5em;display:block;margin-bottom:10px;line-height:1;animation:iconBounce 1.2s cubic-bezier(.22,1,.36,1) .6s forwards;opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}
+@keyframes iconBounce{0%{opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}50%{opacity:1;transform:scale(1.4) rotate(5deg);filter:blur(0)}70%{transform:scale(.9) rotate(-2deg)}100%{opacity:1;transform:scale(1) rotate(0deg);filter:blur(0)}}
+
+/* Rating badge - slide up with blur */
+.hero-content .rating-badge{opacity:0;transform:translateY(30px);filter:blur(3px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.2s forwards}
+@keyframes slideUpBlur{0%{opacity:0;transform:translateY(30px);filter:blur(3px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+
+/* Headline - dramatic slide up with scale */
+.hero-content h1{opacity:0;transform:translateY(50px) scale(.95);animation:headlineIn 1s cubic-bezier(.16,1,.3,1) 1.5s forwards}
+@keyframes headlineIn{0%{opacity:0;transform:translateY(50px) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Subtitle text - slide up */
+.hero-content p{opacity:0;transform:translateY(30px);animation:slideUp .8s cubic-bezier(.22,1,.36,1) 2s forwards}
+@keyframes slideUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+
+/* CTA button - glow in */
+.hero-content .btn{opacity:0;transform:scale(.8);animation:btnGlow 1s cubic-bezier(.22,1,.36,1) 2.3s forwards;position:relative}
+@keyframes btnGlow{0%{opacity:0;transform:scale(.8);box-shadow:0 0 0 0 rgba(251,146,60,.3)}60%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1);box-shadow:0 4px 30px rgba(251,146,60,.3),0 0 60px rgba(251,146,60,.15)}}
+
+/* Pulse glow on CTA after entrance */
+.hero-content .btn::after{content:'';position:absolute;inset:0;border-radius:30px;background:inherit;z-index:-1;opacity:0;animation:pulseGlow 2.5s ease 3.5s infinite}
+@keyframes pulseGlow{0%,100%{opacity:0;transform:scale(1);filter:blur(0)}50%{opacity:.5;transform:scale(1.15);filter:blur(8px)}}
+
+/* Subtle background particles (floating) */
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(251,146,60,.15);pointer-events:none;z-index:1}
+.p1{top:20%;left:10%;animation:float 8s ease-in-out infinite}
+.p2{top:60%;left:85%;animation:float 10s ease-in-out infinite 1s}
+.p3{top:80%;left:20%;animation:float 7s ease-in-out infinite 2s}
+.p4{top:30%;left:75%;animation:float 9s ease-in-out infinite 3s}
+.p5{top:70%;left:40%;animation:float 11s ease-in-out infinite .5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
+
+#hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
+#hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;background:linear-gradient(135deg,#fb923c,#a78bfa);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(251,146,60,.3);transition:transform .3s}
+.btn:hover{transform:scale(1.05)}
+
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#0b0b17,transparent);pointer-events:none;z-index:1}
+
+/* ── SECTIONS BELOW ── */
 section{padding:80px 24px}
 .section-inner{max-width:1100px;margin:0 auto}
 h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#fb923c,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h3{font-size:1.2em;margin-bottom:8px;color:#fff}
 p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#19193a 30%,#1a1040 60%,#0b0b17 100%)}
-.theme-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.theme-bg svg{position:absolute;width:100%;height:100%}
-#hero::before{content:'';position:absolute;width:80vw;height:80vw;top:-30%;left:-20%;background:radial-gradient(circle,rgba(251,146,60,.25) 0%,transparent 65%);border-radius:50%;pointer-events:none;animation:orb1 18s ease-in-out infinite}
-@keyframes orb1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-50px) scale(1.1)}66%{transform:translate(-30px,20px) scale(.95)}}
-#hero::after{content:'';position:absolute;width:60vw;height:60vw;bottom:-20%;right:-15%;background:radial-gradient(circle,rgba(167,139,250,.2) 0%,transparent 65%);border-radius:50%;pointer-events:none;animation:orb2 22s ease-in-out infinite}
-@keyframes orb2{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-40px,30px) scale(1.05)}66%{transform:translate(30px,-40px) scale(.9)}}
-.hero-content{position:relative;z-index:2}
-.paint-reveal .rating-badge{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 1.2s forwards;transform-origin:left}
-.paint-reveal h1{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 1.5s forwards;transform-origin:left}
-.paint-reveal p{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 1.8s forwards;transform-origin:left}
-.paint-reveal .btn{opacity:0;animation:paintIn .8s cubic-bezier(.22,1,.36,1) 2.1s forwards;transform-origin:left}
-@keyframes paintIn{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-20px)}100%{opacity:1;clip-path:inset(0 0 0 0);transform:translateX(0)}}
-#hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
-#hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
-.btn{display:inline-block;background:linear-gradient(135deg,#fb923c,#a78bfa);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(251,146,60,.3);transition:transform .3s}
-.btn:hover{transform:scale(1.05)}
-.hero-fade{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#0b0b17,transparent);pointer-events:none;z-index:1}
 #about{background:#0b0b17}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
@@ -86,7 +127,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <body>
 <div id="loader"><div class="loader-icon">🏗️</div><div class="brush-load"></div><div class="loader-text">Raising walls...</div></div>
 <nav><a href="#" class="logo">Cornerstone <span>Builds Ltd</span></a><div><a href="#about">About</a><a href="#services">Services</a><a href="#testimonials">Reviews</a><a href="#contact">Contact</a></div></nav>
-<section id="hero"><div class="theme-bg"><svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="200" x2="1440" y2="200" stroke="rgba(251,146,60,.08)" stroke-width="3" stroke-dasharray="20 15"><animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" fill="freeze"/></line><line x1="0" y1="400" x2="1440" y2="400" stroke="rgba(251,146,60,.06)" stroke-width="3" stroke-dasharray="20 15"><animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" begin=".3s" fill="freeze"/></line><line x1="0" y1="600" x2="1440" y2="600" stroke="rgba(167,139,250,.06)" stroke-width="3" stroke-dasharray="20 15"><animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" begin=".6s" fill="freeze"/></line><line x1="300" y1="50" x2="300" y2="850" stroke="rgba(251,146,60,.06)" stroke-width="4"><animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="2s" begin=".5s" fill="freeze"/><animate attributeName="stroke-dashoffset" from="2000" to="0" dur="2s" begin=".5s" fill="freeze"/></line><line x1="750" y1="50" x2="750" y2="850" stroke="rgba(251,146,60,.05)" stroke-width="4"><animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="2s" begin=".8s" fill="freeze"/><animate attributeName="stroke-dashoffset" from="2000" to="0" dur="2s" begin=".8s" fill="freeze"/></line><line x1="1200" y1="50" x2="1200" y2="850" stroke="rgba(251,146,60,.06)" stroke-width="4"><animate attributeName="stroke-dasharray" from="0 2000" to="2000 0" dur="2s" begin="1.1s" fill="freeze"/><animate attributeName="stroke-dashoffset" from="2000" to="0" dur="2s" begin="1.1s" fill="freeze"/></line><rect x="250" y="320" width="100" height="60" rx="4" fill="rgba(251,146,60,.08)"><animate attributeName="y" from="900" to="320" dur="1.5s" begin="1.5s" fill="freeze"/></rect><rect x="250" y="260" width="100" height="60" rx="4" fill="rgba(251,146,60,.06)"><animate attributeName="y" from="900" to="260" dur="1.5s" begin="1.8s" fill="freeze"/></rect><rect x="250" y="200" width="100" height="60" rx="4" fill="rgba(251,146,60,.04)"><animate attributeName="y" from="900" to="200" dur="1.5s" begin="2.1s" fill="freeze"/></rect><rect x="1050" y="500" width="120" height="16" rx="3" fill="rgba(167,139,250,.08)"><animate attributeName="opacity" from="0" to="1" dur="1s" begin="2.5s" fill="freeze"/></rect><circle cx="1090" cy="508" r="4" fill="rgba(251,146,60,.15)"><animate attributeName="opacity" from="0" to="1" dur=".5s" begin="3s" fill="freeze"/></circle></svg></div><div class="hero-content paint-reveal"><div class="rating-badge">⭐ 5 · 10 reviews</div><h1>Expert Builder Services<br>in New Lynn, Auckland</h1><p>Professional builder serving New Lynn, Auckland and surrounding areas. Quality work guaranteed.</p><a href="tel:0275126587" class="btn">📞 Call 027 512 6587</a></div><div class="hero-fade"></div></section>
+<section id="hero"><div class="grid-bg"></div><div class="wash-overlay"></div><div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div><div class="particle p4"></div><div class="particle p5"></div><div class="hero-content"><span class="hero-icon">🏗️</span><div class="rating-badge">⭐ 5 · 10 reviews</div><h1>Expert Builder Services<br>in New Lynn, Auckland</h1><p>Professional builder serving New Lynn, Auckland and surrounding areas. Quality work guaranteed.</p><a href="tel:0275126587" class="btn">📞 Call 027 512 6587</a></div><div class="hero-fade"></div></section>
 <section id="about"><div class="section-inner reveal"><h2>About Us</h2><div class="about-grid"><div><div class="rating-badge">⭐ 5 · 10 reviews</div><p>Cornerstone Builds Ltd is a trusted builder serving New Lynn, Auckland and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p><p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p></div><div class="about-image"><img src="images/about.jpg" alt="Builder work in New Lynn, Auckland" loading="lazy"></div></div></div></section>
 <section id="services"><div class="section-inner reveal"><h2>Our Services</h2><p class="subtitle">Professional builder services you can count on.</p><div class="services-grid"><div class="service-card"><div class="icon">🏗️</div><h3>Quality Builder Work</h3><p>Professional builder services tailored to your needs. Quality guaranteed.</p></div><div class="service-card"><div class="icon">📋</div><h3>Free Quotes</h3><p>Call us for a free no-obligation quote. We'll discuss your project and provide an honest estimate.</p></div><div class="service-card"><div class="icon">⭐</div><h3>Rated 5 · 10</h3><p>Rated 5 · 10 on Google. Our customers trust us with their projects.</p></div></div></div></section>
 <section id="testimonials"><div class="section-inner reveal"><h2>What Our Clients Say</h2><p class="subtitle">Rated 5 · 10 stars on Google — here's what people are saying.</p><div class="testimonial-grid"><div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">New Lynn, Auckland</div></div></div><div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. Attention to detail and fair pricing."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">New Lynn, Auckland</div></div></div><div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">New Lynn, Auckland</div></div></div></div></div></section>
