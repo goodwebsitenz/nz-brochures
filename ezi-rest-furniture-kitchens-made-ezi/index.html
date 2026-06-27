@@ -107,12 +107,28 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+.trust-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:18px;opacity:0;transform:translateY(30px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.3s forwards}
+.trust-bar span{display:inline-flex;align-items:center;gap:5px;font-size:.82em;color:rgba(255,255,255,.55);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:5px 14px;border-radius:20px}
+.trust-bar span strong{color:rgba(255,255,255,.85)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr;gap:12px}}
+.gallery-card{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;transition:transform .4s,box-shadow .4s;cursor:default;border:1px solid rgba(255,255,255,.06)}
+.gallery-card:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(245,158,11,.15)}
+.gallery-card .gallery-icon{font-size:2.8em;position:relative;z-index:2;opacity:.7;transition:opacity .4s,transform .4s}
+.gallery-card:hover .gallery-icon{opacity:1;transform:scale(1.1)}
+.gallery-card .gallery-label{position:absolute;bottom:14px;left:14px;right:14px;text-align:center;z-index:2;font-size:.75em;color:rgba(255,255,255,.5);letter-spacing:.5px}
+.gallery-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4),transparent 50%);z-index:1;pointer-events:none}
+.emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s ease,transform .4s ease,visibility .4s ease;opacity:0;visibility:hidden;transform:translateY(20px);pointer-events:none}
+.emergency-btn.show{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
+.emergency-btn .pulse-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:pulseAmber .8s ease-in-out infinite}
+@keyframes pulseAmber{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
 </style>
 </head>
 <body>
 <div id="loader"><div class="loader-icon">🪚</div><div class="brush-load"></div><div class="loader-text">Shaping timber...</div></div>
-<nav><a href="#" class="logo">Ezi-Rest Furniture & Kitchens Made Ezi</a><div><a href="#about">About</a><a href="#services">Services</a><a href="#testimonials">Reviews</a><a href="#hours">Hours</a><a href="#contact">Contact</a></div></nav>
-<section id="hero"><div class="grid-bg"></div><div class="wash-overlay"></div><div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div><div class="particle p4"></div><div class="particle p5"></div><div class="hero-content"><span class="hero-icon">🪚</span><div class="rating-badge">⭐ 4.8 · 17 reviews</div><h1>Expert Carpenter Services<br>in Hamilton</h1><p>Professional carpenter serving Hamilton and surrounding areas. Trusted by 17 Google reviewers with a 4.8 star rating.</p><a href="tel:078496710" class="btn">📞 Call 07 849 6710</a></div><div class="hero-fade"></div></section>
+<nav><a href="#" class="logo">Ezi-Rest Furniture & Kitchens Made Ezi</a><div><a href="#about">About</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#testimonials">Reviews</a><a href="#hours">Hours</a><a href="#contact">Contact</a></div></nav>
+<section id="hero"><div class="grid-bg"></div><div class="wash-overlay"></div><div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div><div class="particle p4"></div><div class="particle p5"></div><div class="hero-content"><span class="hero-icon">🪚</span><div class="rating-badge">⭐ 4.8 · 17 reviews</div><div class=\"trust-bar\"><span>🏆 <strong>5+ Years</strong> Serving Hamilton</span><span>✅ <strong>100+</strong> Projects Completed</span></div><h1>Expert Carpenter Services<br>in Hamilton</h1><p>Professional carpenter serving Hamilton and surrounding areas. Trusted by 17 Google reviewers with a 4.8 star rating.</p><a href="tel:078496710" class="btn">📞 Call 07 849 6710</a></div><div class="hero-fade"></div></section>
 <section id="about"><div class="section-inner reveal"><h2>About Us</h2><div class="about-grid"><div><div class="rating-badge">⭐ 4.8 · 17 reviews</div><p>Ezi-Rest Furniture & Kitchens Made Ezi is a trusted carpenter serving Hamilton and surrounding areas. With a 4.8 star rating from 17 Google reviews, our customers trust us with their projects.</p><p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p></div><div class="about-image"><img src="images/about3.jpg" alt="carpenter work in Hamilton" loading="lazy"></div></div></div></section>
 
 
@@ -123,7 +139,15 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="service-card"><div class="icon">🏠</div><h3>Interior Joinery</h3><p>Wardrobes, shelving, and custom interior joinery solutions.</p></div>
 
 </div></div></section>
-<section id="testimonials"><div class="section-inner reveal"><h2>What Our Clients Say</h2><p class="subtitle">Real reviews from real customers — rated 4.8 stars on Google.</p><div class="testimonial-grid">
+<section id="gallery"><div class="section-inner reveal"><h2>Our Work</h2><p class="subtitle">Placeholder gallery — your actual project photos will replace these once you have images to share.</p><div class="gallery-grid">
+<div class="gallery-card" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><div class="gallery-icon">🛋️</div><div class="gallery-label">Sofas & Lounges</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#a0522d,#8b4513)"><div class="gallery-icon">🪑</div><div class="gallery-label">Dining Sets</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#c084fc,#a855f7)"><div class="gallery-icon">🗄️</div><div class="gallery-label">Cabinetry</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🛏️</div><div class="gallery-label">Bedroom</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🪜</div><div class="gallery-label">Shelving</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🖼️</div><div class="gallery-label">Custom Pieces</div></div>
+</div></div></section>
+<section id="testimonials"><div class="section-inner reveal"><h2>What Our Clients Say</h2><p class="subtitle">Real reviews from real customers — rated 4.8 stars on Google.</p>
 <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Extremely happy with the service, support and communication from Callum and his team, they were great to deal with.   I am absolutely delighted  with my new display cabinet that was custom made for my existing kitchen.  ..."</blockquote><div class="author"><div class="author-avatar">ME</div><div class="author-name">Marshall Earthworx</div><div class="author-title">Google Review</div></div></div>
 <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We have just had a full kitchen made and installed by Ezi Kitchens. We are completely happy with our new kitchen. All communication was spot on. The time frames were kept to and the product was made exactly as we hoped a..."</blockquote><div class="author"><div class="author-avatar">SF</div><div class="author-name">Sasha F Morris</div><div class="author-title">Google Review</div></div></div>
 <div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We can’t recommend Callum and his team highly enough. We came to them with our own design and short timeframe for completion and they delivered with a quality kitchen and installation process that we are absolutely stoke..."</blockquote><div class="author"><div class="author-avatar">JC</div><div class="author-name">John Cuttance</div><div class="author-title">Google Review</div></div></div>
@@ -142,10 +166,23 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="contact"><div class="section-inner reveal"><h2>Get in Touch</h2><p class="subtitle">Call, email, or visit — free no-obligation quotes.</p><div class="contact-grid"><div class="contact-card"><div class="icon">📞</div><h3>Phone</h3><a href="tel:078496710">07 849 6710</a><p>Call or text anytime</p></div><div class="contact-card"><div class="icon">✉️</div><h3>Email</h3><a href="mailto:info@ezi-rest-furniture-kitchens-made-ezi.co.nz">info@ezi-rest-furniture-kitchens-made-ezi.co.nz</a><p>We'll respond within 24h</p></div><div class="contact-card"><div class="icon">📍</div><h3>Location</h3><p style="color:#fff;font-size:1.1em;font-weight:600">Hamilton</p><p>Serving all of Hamilton</p></div></div></div></section>
 
 <footer><p>&copy; 2026 Ezi-Rest Furniture & Kitchens Made Ezi — Hamilton. Real Google reviews data via Places API.</p></footer>
+<a href="tel:078496710" class="emergency-btn"><span class="pulse-dot"></span> 📞 Call Now</a>
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
 const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Show emergency button only when hero CTA is scrolled out of view
+const heroBtn = document.querySelector('.hero-content .btn');
+const emergencyBtn = document.querySelector('.emergency-btn');
+if (heroBtn && emergencyBtn) {
+  const ctaObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+  ctaObserver.observe(heroBtn);
+}
 </script>
 </body>
 </html>
