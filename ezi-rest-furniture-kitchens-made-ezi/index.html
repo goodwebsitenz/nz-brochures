@@ -24,11 +24,11 @@ nav .logo span{color:#d97706}
 nav div{display:flex;justify-content:center;flex-wrap:wrap;gap:2px 6px;margin-top:4px}
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82em;padding:4px 8px;white-space:nowrap;transition:color .3s}
 nav a:hover{color:#fff}
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#19193a 30%,#1a1040 60%,#0b0b17 100%)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#1a120b 30%,#0f0b08 60%,#0b0b17 100%)}
 #hero::before{content:'';position:absolute;width:90vw;height:90vw;top:-30%;left:-25%;background:radial-gradient(circle,rgba(217,119,6,.2) 0%,transparent 60%);border-radius:50%;pointer-events:none}
 #hero::after{content:'';position:absolute;width:70vw;height:70vw;bottom:-25%;right:-20%;background:radial-gradient(circle,rgba(245,158,11,.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
 .grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:80px 80px;z-index:0}
-.wash-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,119,6,.3),rgba(245,158,11,.15),#0b0b17);z-index:2;pointer-events:none;clip-path:inset(0 0 0 0);animation:washReveal 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
+.wash-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(217,119,6,.3),rgba(180,83,9,.15),#0b0b17);z-index:2;pointer-events:none;clip-path:inset(0 0 0 0);animation:washReveal 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
 @keyframes washReveal{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(100% 0 0 0)}}
 .hero-content{position:relative;z-index:3}
 .hero-icon{font-size:5em;display:block;margin-bottom:10px;line-height:1;animation:iconBounce 1.2s cubic-bezier(.22,1,.36,1) .6s forwards;opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}
