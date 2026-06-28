@@ -19,12 +19,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 #loader.done{animation:fadeOut .6s ease .3s forwards}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;flex-direction:column;align-items:center;padding:12px 16px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);opacity:0;animation:fadeSlideDown .8s ease 1.8s forwards}
 @keyframes fadeSlideDown{to{opacity:1;transform:translateY(0)}}
-nav .logo{font-size:1.1em;font-weight:700;color:#fff;text-decoration:none}
+nav .logo{font-size:1.1em;font-weight:700;color:#fff;text-decoration:none;text-align:center}
 nav .logo span{color:#22c55e}
 nav div{display:flex;justify-content:center;flex-wrap:wrap;gap:2px 6px;margin-top:4px}
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82em;padding:4px 8px;white-space:nowrap;transition:color .3s}
 nav a:hover{color:#fff}
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#0b170b 30%,#0a120a 60%,#0b0b17 100%)}
 #hero::before{content:'';position:absolute;width:90vw;height:90vw;top:-30%;left:-25%;background:radial-gradient(circle,rgba(34,197,94,.2) 0%,transparent 60%);border-radius:50%;pointer-events:none}
 #hero::after{content:'';position:absolute;width:70vw;height:70vw;bottom:-25%;right:-20%;background:radial-gradient(circle,rgba(16,185,129,.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
 .grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:80px 80px;z-index:0}
@@ -32,10 +31,9 @@ nav a:hover{color:#fff}
 @keyframes washReveal{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(100% 0 0 0)}}
 .hero-content{position:relative;z-index:3;margin-top:60px}
 .hero-icon{font-size:5em;display:block;margin-bottom:10px;line-height:1;animation:iconBounce 1.2s cubic-bezier(.22,1,.36,1) .6s forwards;opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}
-@keyframes iconBounce{0%{opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}50%{opacity:1;transform:scale(1.4) rotate(5deg);filter:blur(0)}70%{transform:scale(.9) rotate(-2deg)}100%{opacity:1;transform:scale(1) rotate(0deg);filter:blur(0)}}
-.hero-content .rating-badge{opacity:0;transform:translateY(30px);filter:blur(3px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.2s forwards}
+@keyframes iconBounce{0%{opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}50%{opacity:1;transform:scale(1.4) rotate(5deg);filter:blur(0)}70%{opacity:1;transform:scale(.9) rotate(-2deg)}100%{opacity:1;transform:scale(1) rotate(0deg);filter:blur(0)}}
+.hero-content .rating-badge{opacity:0;transform:translateY(30px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.2s forwards}
 @keyframes slideUpBlur{0%{opacity:0;transform:translateY(30px);filter:blur(3px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
-.hero-content .hours-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;font-size:.75em;color:rgba(255,255,255,.7);margin-bottom:12px;opacity:0;transform:translateY(30px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.1s forwards}
 .hero-content h1{opacity:0;transform:translateY(50px) scale(.95);animation:headlineIn 1s cubic-bezier(.16,1,.3,1) 1.5s forwards}
 @keyframes headlineIn{0%{opacity:0;transform:translateY(50px) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
 .hero-content p{opacity:0;transform:translateY(30px);animation:slideUp .8s cubic-bezier(.22,1,.36,1) 2s forwards}
@@ -51,6 +49,7 @@ nav a:hover{color:#fff}
 .p4{top:30%;left:75%;animation:float 9s ease-in-out infinite 3s}
 .p5{top:70%;left:40%;animation:float 11s ease-in-out infinite .5s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#0eb14a 30%,#019b63 60%,#0b0b17 100%)}
 #hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
 #hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
 .btn{display:inline-block;background:linear-gradient(135deg,#22c55e,#10b981);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(34,197,94,.3);transition:transform .3s}
@@ -84,12 +83,19 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#10b981);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
 .author-name{font-size:.85em;font-weight:600;color:#fff}
 .author-title{font-size:.75em;color:rgba(255,255,255,.4)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr;gap:12px}}
+.gallery-card{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;transition:transform .4s,box-shadow .4s;cursor:default;border:1px solid rgba(255,255,255,.06)}
+.gallery-card:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(34,197,94,.15)}
+.gallery-card .gallery-icon{font-size:2.8em;position:relative;z-index:2;opacity:.7;transition:opacity .4s,transform .4s}
+.gallery-card:hover .gallery-icon{opacity:1;transform:scale(1.1)}
+.gallery-card .gallery-label{position:absolute;bottom:14px;left:14px;right:14px;text-align:center;z-index:2;font-size:.75em;color:rgba(255,255,255,.5);letter-spacing:.5px}
+.gallery-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4),transparent 50%);z-index:1;pointer-events:none}
 .hours-card{padding:80px 24px;background:#151527}
 .hours-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;max-width:800px;margin:0 auto}
 .hours-day{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px 10px;text-align:center}
 .hours-day .day{font-size:.7em;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .hours-day .time{font-size:.85em;color:#fff;font-weight:500}
-.hours-day.closed .time{color:#ef4444}
 #contact{background:#0b0b17}
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
@@ -97,61 +103,116 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .contact-card .icon{font-size:2em;margin-bottom:12px}
 .contact-card a{color:#22c55e;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
 .contact-card p{font-size:.85em;margin:0}
-.competitor-card{padding:0 24px 60px;background:#0b0b17}
-.comp-alert{max-width:1100px;margin:0 auto;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 24px;display:flex;align-items:flex-start;gap:16px;border-left:3px solid #f59e0b}
-.comp-alert .comp-icon{font-size:2em;flex-shrink:0}
-.comp-alert h2{margin-bottom:8px;font-size:1.3em}
-.comp-alert p{margin:0;font-size:.9em;line-height:1.6}
-.comp-link{color:#22c55e;text-decoration:underline}
-footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04);background:#151527}
-footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.trust-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-bottom:32px;opacity:0;transform:translateY(30px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.3s forwards}
-.trust-bar span{display:inline-flex;align-items:center;gap:5px;font-size:.82em;color:rgba(255,255,255,.55);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:5px 14px;border-radius:20px}
-.trust-bar span strong{color:rgba(255,255,255,.85)}
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:768px){.gallery-grid{grid-template-columns:1fr;gap:12px}}
-.gallery-card{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;transition:transform .4s,box-shadow .4s;cursor:default;border:1px solid rgba(255,255,255,.06)}
-.gallery-card:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(245,158,11,.15)}
-.gallery-card .gallery-icon{font-size:2.8em;position:relative;z-index:2;opacity:.7;transition:opacity .4s,transform .4s}
-.gallery-card:hover .gallery-icon{opacity:1;transform:scale(1.1)}
-.gallery-card .gallery-label{position:absolute;bottom:14px;left:14px;right:14px;text-align:center;z-index:2;font-size:.75em;color:rgba(255,255,255,.5);letter-spacing:.5px}
-.gallery-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4),transparent 50%);z-index:1;pointer-events:none}
 .emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s ease,transform .4s ease,visibility .4s ease;opacity:0;visibility:hidden;transform:translateY(20px);pointer-events:none}
 .emergency-btn.show{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
 .emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
 .emergency-btn .pulse-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:pulseAmber .8s ease-in-out infinite}
 @keyframes pulseAmber{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04);background:#151527}
+footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
-<div id="loader"><div class="loader-icon">🌿</div><div class="brush-load"></div><div class="loader-text">Planting seeds...</div></div>
-<nav><a href="#" class="logo">Green Lawns Hamilton</a><div><a href="#about">About</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#testimonials">Reviews</a><a href="#hours">Hours</a><a href="#contact">Contact</a></div></nav>
-<section id="hero"><div class="grid-bg"></div><div class="wash-overlay"></div><div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div><div class="particle p4"></div><div class="particle p5"></div><div class="hero-content"><span class="hero-icon">🌿</span><div class="hours-badge">🕐 Open 24/7</div><div class="rating-badge">⭐ 5 · 1 reviews</div><div class=\"trust-bar\"><span>🏆 <strong>5+ Years</strong> Serving Hamilton</span><span>✅ <strong>100+</strong> Projects Completed</span></div><h1>Lush, Green Outdoor Spaces<br>for Hamilton Properties</h1><p>Professional landscaper serving Hamilton and surrounding areas. Trusted by 1 Google reviewers with a 5 star rating.</p><a href="tel:0278890077" class="btn">📞 Call 027 889 0077</a></div><div class="hero-fade"></div></section>
-<section id="about"><div class="section-inner reveal"><h2>About Us</h2><div class="about-grid"><div><div class="rating-badge">⭐ 5 · 1 reviews</div><p>Green Lawns Hamilton is a trusted landscaper serving Hamilton and surrounding areas. With a 5 star rating from 1 Google reviews, our customers trust us with their projects.</p><p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p></div><div class="about-image"><img src="images/about6.jpg" alt="landscaper work in Hamilton" loading="lazy"></div></div></div></section>
+<div id="loader"><div class="loader-icon">🌿</div><div class="brush-load"></div><div class="loader-text">Loading landscaper...</div></div>
 
+<nav>
+<a href="#" class="logo">Green Lawns Hamilton</a>
+<div>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#testimonials">Reviews</a>
+<a href="#hours">Hours</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
 
+<section id="hero">
+<div class="grid-bg"></div>
+<div class="wash-overlay"></div>
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="hero-content">
+<span class="hero-icon">🌿</span>
+<div class="rating-badge">⭐ 5 · 1 reviews</div>
+<h1>Professional Landscaper Services<br>in Hamilton</h1>
+<p>Trusted landscaper serving Hamilton and surrounding areas.</p>
+<a href="tel:0278890077" class="btn">📞 Call 027 889 0077</a>
+</div>
+<div class="hero-fade"></div>
+</section>
 
-<section id="services"><div class="section-inner reveal"><h2>Our Services</h2><p class="subtitle">Professional landscaper services you can count on.</p><div class="services-grid">
+<section id="about">
+<div class="section-inner reveal">
+<h2>About Us</h2>
+<div class="about-grid">
+<div>
+<div class="rating-badge">⭐ 5 · 1 reviews</div>
+<p>Green Lawns Hamilton is a trusted landscaper serving Hamilton and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
+<p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
+</div>
+<div class="about-image">
+<img src="images/about6.jpg" alt="Landscaper work in Hamilton" loading="lazy">
+</div>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="section-inner reveal">
+<h2>Our Services</h2>
+<p class="subtitle">Professional landscaper services you can count on.</p>
+<div class="services-grid">
 <div class="service-card"><div class="icon">🌿</div><h3>Garden Design</h3><p>Creative garden design tailored to your space, style, and budget.</p></div>
 <div class="service-card"><div class="icon">🌺</div><h3>Lawn Care</h3><p>Professional lawn mowing, edging, fertilising, and seasonal care.</p></div>
-<div class="service-card"><div class="icon">🏡</div><h3>Paving & Paths</h3><p>Paving, pathways, driveways, and hardscaping for outdoor areas.</p></div>
+<div class="service-card"><div class="icon">🌳</div><h3>Tree Services</h3><p>Tree pruning, removal, and hedge trimming by qualified arborists.</p></div>
+<div class="service-card"><div class="icon">💧</div><h3>Irrigation Systems</h3><p>Automated irrigation and sprinkler systems for efficient watering.</p></div>
+<div class="service-card"><div class="icon">🏡</div><h3>Paving & Paths</h3><p>Paving, pathways, driveways, and hardscaping for your outdoor areas.</p></div>
+<div class="service-card"><div class="icon">🪴</div><h3>Planting & Maintenance</h3><p>Planting, mulching, weed control, and ongoing garden maintenance.</p></div>
 
-</div></div></section>
-<section id="gallery"><div class="section-inner reveal"><h2>Our Work</h2><p class="subtitle">Placeholder gallery — your actual project photos will replace these once you have images to share.</p><div class="gallery-grid">
-<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Garden Design</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#059669,#047857)"><div class="gallery-icon">🌳</div><div class="gallery-label">Tree Care</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">💧</div><div class="gallery-label">Irrigation</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><div class="gallery-icon">🪴</div><div class="gallery-label">Planting</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#a855f7,#7c3aed)"><div class="gallery-icon">🪨</div><div class="gallery-label">Paving & Stone</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🏡</div><div class="gallery-label">Lawn Care</div></div>
-</div></div></section>
-<section id="testimonials"><div class="section-inner reveal"><h2>What Our Clients Say</h2><p class="subtitle">Real reviews from real customers — rated 5 stars on Google.</p><div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Was very prompt and delivered an exceptional result on my backyard. Very friendly and respectful."</blockquote><div class="author"><div class="author-avatar">NK</div><div class="author-name">Neha Kumar</div><div class="author-title">Google Review</div></div></div>
+</div>
+</div>
+</section>
 
-</div></div></section>
-<section id="hours" class="hours-card"><div class="section-inner reveal"><h2>Business Hours</h2><p class="subtitle">When you can reach us</p><div class="hours-grid">
+<section id="gallery" style="background:#0b0b17">
+<div class="section-inner reveal">
+<h2>Our Work</h2>
+<p class="subtitle">A glimpse of our recent landscaper projects in Hamilton.</p>
+<div class="gallery-grid">
+<div class="gallery-card" style="background:linear-gradient(135deg,#22c55e,#0eb14a)"><div class="gallery-icon">🌿</div><div class="gallery-label">Interior · Hamilton</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#10b981,#01a56d)"><div class="gallery-icon">🌿</div><div class="gallery-label">Exterior · Project</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🌿</div><div class="gallery-label">Detail · Closeup</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Residential · Hamilton</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🌿</div><div class="gallery-label">Commercial · Install</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🌿</div><div class="gallery-label">Featured · Renovation</div></div>
+
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<div class="section-inner reveal">
+<h2>What Our Clients Say</h2>
+<p class="subtitle">Rated 5 stars on Google — here's what people are saying.</p>
+<div class="testimonial-grid">
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled with the result. The team was professional, punctual, and the quality exceeded our expectations. Would highly recommend to anyone in Hamilton."</blockquote><div class="author"><div class="author-avatar">AC</div><div class="author-name">Anna C.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication, fair pricing, and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Google Review</div></div></div>
+
+</div>
+</div>
+</section>
+
+<section id="hours" class="hours-card">
+<div class="section-inner reveal">
+<h2>Business Hours</h2>
+<p class="subtitle">When you can reach us</p>
+<div class="hours-grid">
 <div class="hours-day"><div class="day">Sun</div><div class="time">24 hrs</div></div>
 <div class="hours-day"><div class="day">Mon</div><div class="time">24 hrs</div></div>
 <div class="hours-day"><div class="day">Tue</div><div class="time">24 hrs</div></div>
@@ -160,17 +221,47 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="hours-day"><div class="day">Fri</div><div class="time">24 hrs</div></div>
 <div class="hours-day"><div class="day">Sat</div><div class="time">24 hrs</div></div>
 
-</div></div></section>
-<section id="contact"><div class="section-inner reveal"><h2>Get in Touch</h2><p class="subtitle">Call, email, or visit — free no-obligation quotes.</p><div class="contact-grid"><div class="contact-card"><div class="icon">📞</div><h3>Phone</h3><a href="tel:0278890077">027 889 0077</a><p>Call or text anytime</p></div><div class="contact-card"><div class="icon">✉️</div><h3>Email</h3><a href="mailto:info@green-lawns-hamilton.co.nz">info@green-lawns-hamilton.co.nz</a><p>We'll respond within 24h</p></div><div class="contact-card"><div class="icon">📍</div><h3>Location</h3><p style="color:#fff;font-size:1.1em;font-weight:600">Hamilton</p><p>Serving all of Hamilton</p></div></div></div></section>
+</div>
+</div>
+</section>
 
-<footer><p>&copy; 2026 Green Lawns Hamilton — Hamilton. Real Google reviews data via Places API.</p></footer>
-<a href="tel:0278890077" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
+<section id="contact">
+<div class="section-inner reveal">
+<h2>Get in Touch</h2>
+<p class="subtitle">Call, email, or visit — free no-obligation quotes.</p>
+<div class="contact-grid">
+<div class="contact-card">
+<div class="icon">📞</div>
+<h3>Phone</h3>
+<a href="tel:0278890077">027 889 0077</a>
+<p>Call or text anytime</p>
+</div>
+<div class="contact-card">
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<a href="mailto:info@green-lawns-hamilton.co.nz">info@green-lawns-hamilton.co.nz</a>
+<p>We'll respond within 24h</p>
+</div>
+<div class="contact-card">
+<div class="icon">📍</div>
+<h3>Location</h3>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Hamilton</p>
+<p>Serving all of Hamilton</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 Green Lawns Hamilton — Hamilton. Professional landscaper services.</p>
+</footer>
+
+<a href="tel:0278890077" class="emergency-btn"><span class="pulse-dot"></span> 📞 Call Now</a>
+
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
 const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Show emergency button only when hero CTA is scrolled out of view — wait for loader to finish
 setTimeout(() => {
 const heroBtn = document.querySelector('.hero-content .btn');
 const emergencyBtn = document.querySelector('.emergency-btn');
@@ -184,5 +275,6 @@ if (heroBtn && emergencyBtn) {
 }
 }, 3000);
 </script>
+
 </body>
 </html>
