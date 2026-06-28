@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Caves Landscapes | landscaper in New Plymouth</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0b0b17;color:#fff;overflow-x:hidden}
+#loader{position:fixed;inset:0;z-index:99999;background:#0b0b17;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+.loader-icon{font-size:2.5em;animation:bounce .6s ease infinite alternate}
+@keyframes bounce{to{transform:translateY(-8px)}}
+.loader-text{font-size:.8em;color:rgba(255,255,255,.3);letter-spacing:3px;text-transform:uppercase}
+.brush-load{width:200px;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;position:relative}
+.brush-load::after{content:'';position:absolute;top:0;left:-40%;width:40%;height:100%;border-radius:3px;background:linear-gradient(90deg,transparent,#22c55e,#10b981,transparent);animation:brushSweep 1.8s ease-in-out infinite}
+@keyframes brushSweep{0%{left:-40%}100%{left:100%}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+#loader.done{animation:fadeOut .6s ease .3s forwards}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;flex-direction:column;align-items:center;padding:12px 16px;background:rgba(13,13,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);opacity:0;animation:fadeSlideDown .8s ease 1.8s forwards}
+@keyframes fadeSlideDown{to{opacity:1;transform:translateY(0)}}
+nav .logo{font-size:1.1em;font-weight:700;color:#fff;text-decoration:none;text-align:center}
+nav .logo span{color:#22c55e}
+nav div{display:flex;justify-content:center;flex-wrap:wrap;gap:2px 6px;margin-top:4px}
+nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82em;padding:4px 8px;white-space:nowrap;transition:color .3s}
+nav a:hover{color:#fff}
+#hero::before{content:'';position:absolute;width:90vw;height:90vw;top:-30%;left:-25%;background:radial-gradient(circle,rgba(34,197,94,.2) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+#hero::after{content:'';position:absolute;width:70vw;height:70vw;bottom:-25%;right:-20%;background:radial-gradient(circle,rgba(16,185,129,.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:80px 80px;z-index:0}
+.wash-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(34,197,94,.3),rgba(16,185,129,.15),#0b0b17);z-index:2;pointer-events:none;clip-path:inset(0 0 0 0);animation:washReveal 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
+@keyframes washReveal{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(100% 0 0 0)}}
+.hero-content{position:relative;z-index:3;margin-top:60px}
+.hero-icon{font-size:5em;display:block;margin-bottom:10px;line-height:1;animation:iconBounce 1.2s cubic-bezier(.22,1,.36,1) .6s forwards;opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}
+@keyframes iconBounce{0%{opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}50%{opacity:1;transform:scale(1.4) rotate(5deg);filter:blur(0)}70%{opacity:1;transform:scale(.9) rotate(-2deg)}100%{opacity:1;transform:scale(1) rotate(0deg);filter:blur(0)}}
+.hero-content .rating-badge{opacity:0;transform:translateY(30px);animation:slideUpBlur .8s cubic-bezier(.22,1,.36,1) 1.2s forwards}
+@keyframes slideUpBlur{0%{opacity:0;transform:translateY(30px);filter:blur(3px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+.hero-content h1{opacity:0;transform:translateY(50px) scale(.95);animation:headlineIn 1s cubic-bezier(.16,1,.3,1) 1.5s forwards}
+@keyframes headlineIn{0%{opacity:0;transform:translateY(50px) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.hero-content p{opacity:0;transform:translateY(30px);animation:slideUp .8s cubic-bezier(.22,1,.36,1) 2s forwards}
+@keyframes slideUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+.hero-content .btn{opacity:0;transform:scale(.8);animation:btnGlow 1s cubic-bezier(.22,1,.36,1) 2.3s forwards;position:relative}
+@keyframes btnGlow{0%{opacity:0;transform:scale(.8);box-shadow:0 0 0 0 rgba(34,197,94,.3)}60%{opacity:1;transform:scale(1.05)}100%{opacity:1;transform:scale(1);box-shadow:0 4px 30px rgba(34,197,94,.3),0 0 60px rgba(34,197,94,.15)}}
+.hero-content .btn::after{content:'';position:absolute;inset:0;border-radius:30px;background:inherit;z-index:-1;opacity:0;animation:pulseGlow 2.5s ease 3.5s infinite}
+@keyframes pulseGlow{0%,100%{opacity:0;transform:scale(1);filter:blur(0)}50%{opacity:.5;transform:scale(1.15);filter:blur(8px)}}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(34,197,94,.15);pointer-events:none;z-index:1}
+.p1{top:20%;left:10%;animation:float 8s ease-in-out infinite}
+.p2{top:60%;left:85%;animation:float 10s ease-in-out infinite 1s}
+.p3{top:80%;left:20%;animation:float 7s ease-in-out infinite 2s}
+.p4{top:30%;left:75%;animation:float 9s ease-in-out infinite 3s}
+.p5{top:70%;left:40%;animation:float 11s ease-in-out infinite .5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 40%,rgba(34,197,94,.35),transparent 70%),radial-gradient(ellipse at 70% 60%,rgba(16,185,129,.2),transparent 60%),linear-gradient(180deg,transparent 30%,#0b0b17 90%),url("images/hero3.jpg")center/cover no-repeat}
+#hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
+#hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
+.btn{display:inline-block;background:linear-gradient(135deg,#22c55e,#10b981);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(34,197,94,.3);transition:transform .3s}
+.btn:hover{transform:scale(1.05)}
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#0b0b17,transparent);pointer-events:none;z-index:1}
+section{padding:80px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#22c55e,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h3{font-size:1.2em;margin-bottom:8px;color:#fff}
+p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
+.subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
+#about{background:#0b0b17}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#22c55e,#10b981)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#22c55e;margin-bottom:20px}
+#services{background:#151527}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.services-grid{grid-template-columns:1fr}}
+.service-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px;text-align:center;transition:transform .3s}
+.service-card:hover{transform:translateY(-4px);border-color:#22c55e}
+.service-card .icon{font-size:2em;margin-bottom:12px}
+.service-card p{font-size:.85em;margin:0}
+#testimonials{background:#0b0b17}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.testimonial-grid{grid-template-columns:1fr}}
+.testimonial-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px}
+.testimonial-card .stars{color:#f59e0b;font-size:1.1em;margin-bottom:12px}
+.testimonial-card blockquote{color:rgba(255,255,255,.5);font-size:.9em;line-height:1.6;margin-bottom:16px;font-style:italic}
+.author{display:flex;align-items:center;gap:10px}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#22c55e,#10b981);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
+.author-name{font-size:.85em;font-weight:600;color:#fff}
+.author-title{font-size:.75em;color:rgba(255,255,255,.4)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr;gap:12px}}
+.gallery-card{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;transition:transform .4s,box-shadow .4s;cursor:default;border:1px solid rgba(255,255,255,.06)}
+.gallery-card:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(34,197,94,.15)}
+.gallery-card .gallery-icon{font-size:2.8em;position:relative;z-index:2;opacity:.7;transition:opacity .4s,transform .4s}
+.gallery-card:hover .gallery-icon{opacity:1;transform:scale(1.1)}
+.gallery-card .gallery-label{position:absolute;bottom:14px;left:14px;right:14px;text-align:center;z-index:2;font-size:.75em;color:rgba(255,255,255,.5);letter-spacing:.5px}
+.gallery-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.4),transparent 50%);z-index:1;pointer-events:none}
+.hours-card{padding:80px 24px;background:#151527}
+.hours-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;max-width:800px;margin:0 auto}
+.hours-day{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px 10px;text-align:center}
+.hours-day .day{font-size:.7em;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.hours-day .time{font-size:.85em;color:#fff;font-weight:500}
+#contact{background:#0b0b17}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
+.contact-card .icon{font-size:2em;margin-bottom:12px}
+.contact-card a{color:#22c55e;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card p{font-size:.85em;margin:0}
+.emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s ease,transform .4s ease,visibility .4s ease;opacity:0;visibility:hidden;transform:translateY(20px);pointer-events:none}
+.emergency-btn.show{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
+.emergency-btn .pulse-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:pulseAmber .8s ease-in-out infinite}
+@keyframes pulseAmber{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255,.04);background:#151527}
+footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div id="loader"><div class="loader-icon">🌿</div><div class="brush-load"></div><div class="loader-text">Loading landscaper...</div></div>
+
+<nav>
+<a href="#" class="logo">Caves Landscapes</a>
+<div>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#gallery">Gallery</a>
+<a href="#testimonials">Reviews</a>
+<a href="#hours">Hours</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section id="hero">
+<div class="grid-bg"></div>
+<div class="wash-overlay"></div>
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
+<div class="hero-content">
+<span class="hero-icon">🌿</span>
+<div class="rating-badge">⭐ 4.6 · 5 reviews</div>
+<h1>Professional landscaper Services<br>in New Plymouth</h1>
+<p>Trusted landscaper serving New Plymouth and surrounding areas.</p>
+<a href="tel:0274611425" class="btn">📞 Call 0274 611 425</a>
+</div>
+<div class="hero-fade"></div>
+</section>
+
+<section id="about">
+<div class="section-inner reveal">
+<h2>About Us</h2>
+<div class="about-grid">
+<div>
+<div class="rating-badge">⭐ 4.6 · 5 reviews</div>
+<p>Caves Landscapes is a trusted landscaper serving New Plymouth and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
+<p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
+</div>
+<div class="about-image">
+<img src="images/about7.jpg" alt="landscaper work in New Plymouth" loading="lazy">
+</div>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="section-inner reveal">
+<h2>Our Services</h2>
+<p class="subtitle">Professional landscaper services you can count on.</p>
+<div class="services-grid">
+<div class="service-card"><div class="icon">🌿</div><h3>Garden Design</h3><p>Creative garden design tailored to your space, style, and budget.</p></div>
+<div class="service-card"><div class="icon">🌺</div><h3>Lawn Care</h3><p>Professional lawn mowing, edging, fertilising, and seasonal care.</p></div>
+<div class="service-card"><div class="icon">🌳</div><h3>Tree Services</h3><p>Tree pruning, removal, and hedge trimming by qualified arborists.</p></div>
+<div class="service-card"><div class="icon">💧</div><h3>Irrigation Systems</h3><p>Automated irrigation and sprinkler systems for efficient watering.</p></div>
+<div class="service-card"><div class="icon">🏡</div><h3>Paving & Paths</h3><p>Paving, pathways, driveways, and hardscaping for your outdoor areas.</p></div>
+<div class="service-card"><div class="icon">🪴</div><h3>Planting & Maintenance</h3><p>Planting, mulching, weed control, and ongoing garden maintenance.</p></div>
+
+</div>
+</div>
+</section>
+
+<section id="gallery" style="background:#0b0b17">
+<div class="section-inner reveal">
+<h2>Our Work</h2>
+<p class="subtitle">A glimpse of our recent landscaper projects in New Plymouth.</p>
+<div class="gallery-grid">
+<div class="gallery-card" style="background:linear-gradient(135deg,#22c55e,#0eb14a)"><div class="gallery-icon">🌿</div><div class="gallery-label">Interior · New Plymouth</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#10b981,#01a56d)"><div class="gallery-icon">🌿</div><div class="gallery-label">Exterior · Project</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🌿</div><div class="gallery-label">Detail · Closeup</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Residential · New Plymouth</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🌿</div><div class="gallery-label">Commercial · Install</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🌿</div><div class="gallery-label">Featured · Renovation</div></div>
+
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<div class="section-inner reveal">
+<h2>What Our Clients Say</h2>
+<p class="subtitle">Rated 4.6 stars on Google — here's what people are saying.</p>
+<div class="testimonial-grid">
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication, fair pricing, and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Couldn't be happier. Fair pricing, excellent communication, and the finished product looks amazing. Will definitely use again."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Google Review</div></div></div>
+
+</div>
+</div>
+</section>
+
+<section id="hours" class="hours-card">
+<div class="section-inner reveal">
+<h2>Business Hours</h2>
+<p class="subtitle">When you can reach us</p>
+<div class="hours-grid">
+<div class="hours-day"><div class="day">Sun</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Mon</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Tue</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Wed</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Thu</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Fri</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Sat</div><div class="time">24 hrs</div></div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-inner reveal">
+<h2>Get in Touch</h2>
+<p class="subtitle">Call, email, or visit — free no-obligation quotes.</p>
+<div class="contact-grid">
+<div class="contact-card">
+<div class="icon">📞</div>
+<h3>Phone</h3>
+<a href="tel:0274611425">0274 611 425</a>
+<p>Call or text anytime</p>
+</div>
+<div class="contact-card">
+<div class="icon">✉️</div>
+<h3>Email</h3>
+<a href="mailto:info@caves-landscapes.co.nz">info@caves-landscapes.co.nz</a>
+<p>We'll respond within 24h</p>
+</div>
+<div class="contact-card">
+<div class="icon">📍</div>
+<h3>Location</h3>
+<p style="color:#fff;font-size:1.1em;font-weight:600">New Plymouth</p>
+<p>Serving all of New Plymouth</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>&copy; 2026 Caves Landscapes — New Plymouth. Professional landscaper services.</p>
+</footer>
+
+<a href="tel:0274611425" class="emergency-btn"><span class="pulse-dot"></span> 📞 Call Now</a>
+
+<script>
+setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
+const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+setTimeout(() => {
+const heroBtn = document.querySelector('.hero-content .btn');
+const emergencyBtn = document.querySelector('.emergency-btn');
+if (heroBtn && emergencyBtn) {
+  const ctaObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+  ctaObserver.observe(heroBtn);
+}
+}, 3000);
+</script>
+
+</body>
+</html>
