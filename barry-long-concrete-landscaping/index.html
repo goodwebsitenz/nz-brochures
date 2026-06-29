@@ -308,12 +308,8 @@ ctx.save();ctx.rotate(angle-Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx
 ctx.beginPath();ctx.ellipse(0,this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
 ctx.fillStyle='#4a044e';ctx.beginPath();ctx.ellipse(0,0,2,this.size*0.25,0,0,7);ctx.fill();ctx.restore()};
 setInterval(function(){if(butterflies.length<4)butterflies.push(new Butterfly())},3000+Math.random()*5000);
-var grass=[];for(var i=0;i<60;i++){grass.push({x:Math.random()*W,y:80+Math.random()*(H-100),h:30+Math.random()*55,w:2+Math.random()*4,phase:Math.random()*6,speed:0.2+Math.random()*0.4,grown:Math.random(),color:'#'+['22c55e','16a34a','4ade80'][Math.floor(Math.random()*3)]})}
 var rays=[];for(var i=0;i<5;i++){rays.push({x:Math.random()*W,angle:-0.5-Math.random()*0.3,speed:0.08+Math.random()*0.2,opacity:0.03+Math.random()*0.03})}
 function animate(t){t=t||0;requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
-for(var i=0;i<grass.length;i++){var g=grass[i];if(g.grown<1)g.grown+=0.01;var gh=g.h*Math.min(1,g.grown);var sway=Math.sin(t*0.003*g.speed+g.phase)*5;
-ctx.save();ctx.globalAlpha=0.5+g.grown*0.3;ctx.strokeStyle=g.color;ctx.lineWidth=g.w;ctx.lineCap='round';ctx.shadowColor=g.color;ctx.shadowBlur=3;
-ctx.beginPath();ctx.moveTo(g.x,g.y);ctx.lineTo(g.x+sway,g.y-gh);ctx.stroke();ctx.restore()}
 for(var i=0;i<leaves.length;i++)leaves[i].draw();
 for(var i=0;i<flowers.length;i++){if(flowers[i].bud<0.01)continue;flowers[i].draw(t)}
 for(var i=0;i<butterflies.length;i++)butterflies[i].draw(t);
