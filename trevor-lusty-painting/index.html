@@ -257,7 +257,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <p>&copy; 2026 Trevor Lusty Painting & Decorating — Timaru. Professional painter services.</p>
 </footer>
 
-<a href="tel:027 640 8245" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
+<a href="tel:027 640 8245" class="emergency-btn">📞 Call Now</a>
 
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
@@ -273,6 +273,39 @@ if (heroBtn && emergencyBtn) {
  });
  }, { threshold: 0 });
  ctaObserver.observe(heroBtn);
+ // Check if open based on hours
+ (function() {
+ var now = new Date();
+ var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+ var today = days[now.getDay()];
+ var mins = now.getHours() * 60 + now.getMinutes();
+ function parseT(s) {
+ var m = s.match(/(\d+):(\d+)\s*(am|pm)/i);
+ if (!m) return null;
+ var h = +m[1], mn = +m[2];
+ if (m[3].toLowerCase()==='pm' && h<12) h+=12;
+ if (m[3].toLowerCase()==='am' && h===12) h=0;
+ return h*60+mn;
+ }
+ var hrs = document.querySelectorAll('.hours-day');
+ var open = false;
+ hrs.forEach(function(el) {
+ if (el.querySelector('.day').textContent.trim() === today) {
+ var t = el.querySelector('.time').textContent.trim();
+ if (!t || t === 'Closed') return;
+ if (t === '24 hrs' || t === '24/7') { open = true; return; }
+ var parts = t.split('\u2013');
+ if (parts.length < 2) parts = t.split('-');
+ if (parts.length === 2) {
+ var o = parseT(parts[0].trim()), c = parseT(parts[1].trim());
+ if (o !== null && c !== null && mins >= o && mins <= c) open = true;
+ }
+ }
+ });
+ if (open) {
+ emergencyBtn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
+ }
+ })();
 }
 }, 3000);
 </script>
