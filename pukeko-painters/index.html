@@ -112,6 +112,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
@@ -132,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -259,21 +261,38 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="tel:02108442529" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
 
 <script>
-setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
-const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-setTimeout(() => {
-const heroBtn = document.querySelector('.hero-content .btn');
-const emergencyBtn = document.querySelector('.emergency-btn');
-if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
-}
-}, 3000);
+(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+var colors=['#818cf8','#c084fc','#a78bfa','#6366f1','#8b5cf6'];
+var strokes=[];
+function Stroke(){var T=Math.floor(H/3);var zone=Math.random()>0.5?0:2;this.y=zone*T+30+Math.random()*(T-60);this.x=-200;this.speed=0.8+Math.random()*1.2;this.color=colors[Math.floor(Math.random()*colors.length)];this.h=14+Math.random()*18;this.len=0;this.maxLen=W*2.5;this.done=false;this.fading=false;this.fadeAlpha=1;this.drips=[];this.splatters=[];this.age=0}
+Stroke.prototype.update=function(){this.age+=0.016;if(this.fading){this.fadeAlpha-=0.008;if(this.fadeAlpha<=0)this.done=true;return}
+var s=this.speed;this.len+=s*3.5;this.x+=s*2.2;if(this.len>this.maxLen||this.x>W+200){this.fading=true;return}
+if(Math.random()<0.04&&this.len>80){this.drips.push({x:this.x-40+Math.random()*80,y:this.y+this.h/2,vy:0.6+Math.random()*1.5,life:1,len:6+Math.random()*16})}
+if(Math.random()<0.01){for(var i=0;i<5+Math.floor(Math.random()*10);i++){this.splatters.push({x:this.x+(Math.random()-0.5)*35,y:this.y+(Math.random()-0.5)*35,r:1.5+Math.random()*6,vy:(Math.random()-0.5)*1,vx:(Math.random()-0.5)*1,life:1,color:this.color})}}
+for(var i=this.drips.length-1;i>=0;i--){var d=this.drips[i];d.y+=d.vy;d.vy+=0.03;d.len+=0.5;d.life-=0.006;if(d.len<0.5)this.drips.splice(i,1)}
+for(var i=this.splatters.length-1;i>=0;i--){var s2=this.splatters[i];s2.x+=s2.vx;s2.y+=s2.vy;s2.vy+=0.015;s2.life-=0.01;if(s2.life<=0)this.splatters.splice(i,1)}}
+Stroke.prototype.draw=function(){if(this.done)return;var a=this.fadeAlpha;if(a<=0)return;ctx.save();
+ctx.globalAlpha=a*0.15;ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=50;ctx.beginPath();ctx.arc(this.x,this.y,60,0,7);ctx.fill();
+ctx.globalAlpha=a*0.75;ctx.shadowBlur=0;ctx.shadowColor=this.color;ctx.shadowBlur=12;
+ctx.strokeStyle=this.color;ctx.lineWidth=this.h;ctx.lineCap='round';
+ctx.beginPath();ctx.moveTo(this.x-this.len,this.y);ctx.lineTo(this.x,this.y);ctx.stroke();
+ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=this.h*0.2;ctx.shadowBlur=0;
+ctx.beginPath();ctx.moveTo(this.x-this.len,this.y-this.h*0.12);ctx.lineTo(this.x,this.y-this.h*0.12);ctx.stroke();
+ctx.fillStyle='rgba(255,255,255,0.2)';ctx.shadowColor=this.color;ctx.shadowBlur=15;
+ctx.beginPath();ctx.arc(this.x+5,this.y,this.h*0.4+Math.sin(this.age*5)*0.5,0,7);ctx.fill();
+for(var i=0;i<this.drips.length;i++){var d=this.drips[i];if(d.len<0.5)continue;
+ctx.globalAlpha=a*0.6;ctx.strokeStyle=this.color;ctx.lineWidth=2;ctx.shadowColor=this.color;ctx.shadowBlur=5;
+ctx.beginPath();ctx.moveTo(d.x,d.y-d.len);ctx.lineTo(d.x,d.y);ctx.stroke();
+ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(d.x,d.y,2.5,0,7);ctx.fill()}
+ctx.restore()};
+function setup(){strokes.push(new Stroke());strokes.push(new Stroke());
+setInterval(function(){if(strokes.length<3)strokes.push(new Stroke())},800+Math.random()*1200);
+function animate(){requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+for(var i=strokes.length-1;i>=0;i--){strokes[i].update();strokes[i].draw();if(strokes[i].done)strokes.splice(i,1)}}
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
 </script>
 
 </body>

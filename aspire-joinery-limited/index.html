@@ -112,6 +112,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
@@ -132,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -259,21 +261,40 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="tel:039432900" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
 
 <script>
-setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
-const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-setTimeout(() => {
-const heroBtn = document.querySelector('.hero-content .btn');
-const emergencyBtn = document.querySelector('.emergency-btn');
-if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
-}
-}, 3000);
+(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+function setup(){
+var blades=[];
+function SawBlade(){this.x=80+Math.random()*(W-160);this.y=80+Math.random()*(H-160);this.r=20+Math.random()*30;this.rot=0;this.speed=0.02+Math.random()*0.04;this.opacity=0.4+Math.random()*0.2;this.color='#'+['f59e0b','d97706','fbbf24','eab308'][Math.floor(Math.random()*4)];this.life=1}
+SawBlade.prototype.draw=function(){this.rot+=this.speed;this.life-=0.002;if(this.life<0.1)return;
+ctx.save();ctx.globalAlpha=this.life*this.opacity;ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+ctx.strokeStyle=this.color;ctx.lineWidth=3;ctx.shadowColor='#f59e0b';ctx.shadowBlur=12;
+ctx.beginPath();ctx.arc(0,0,this.r,0,7);ctx.stroke();
+for(var i=0;i<12;i++){var a=(i/12)*7;ctx.save();ctx.rotate(a);ctx.strokeStyle=this.color;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(this.r-5,0);ctx.lineTo(this.r+5,0);ctx.stroke();ctx.restore()}
+ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(0,0,this.r*0.4,0,7);ctx.stroke();
+ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(0,0,3,0,7);ctx.fill();ctx.restore()};
+setInterval(function(){if(blades.length<4)blades.push(new SawBlade())},2000+Math.random()*3000);
+var lines=[];function PencilLine(){this.x=30+Math.random()*(W-60);this.y=30+Math.random()*(H-60);this.len=0;this.maxLen=80+Math.floor(Math.random()*100);this.speed=3+Math.random()*5;this.angle=Math.random()*7;this.cx=this.x;this.cy=this.y;this.opacity=0.6}
+PencilLine.prototype.draw=function(){if(this.len>=this.maxLen)return;var px=this.cx;var py=this.cy;this.len+=this.speed;this.angle+=(Math.random()-0.5)*0.4;
+this.cx+=Math.cos(this.angle)*this.speed;this.cy+=Math.sin(this.angle)*this.speed;
+ctx.save();ctx.globalAlpha=this.opacity;
+ctx.strokeStyle='#fbbf24';ctx.lineWidth=4;ctx.shadowColor='#fbbf24';ctx.shadowBlur=10;
+ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(this.cx,this.cy);ctx.stroke();ctx.restore()};
+for(var i=0;i<6;i++)lines.push(new PencilLine());
+setInterval(function(){lines.push(new PencilLine())},1500+Math.random()*2500);
+var shavings=[];function Shaving(){this.x=Math.random()*W;this.y=-20;this.w=14+Math.random()*22;this.h=4+Math.random()*7;this.speed=0.6+Math.random()*1.2;this.rot=Math.random()*6;this.rv=(Math.random()-0.5)*0.04;this.color='#'+['f59e0b','d97706','b45309','eab308'][Math.floor(Math.random()*4)]}
+Shaving.prototype.draw=function(){this.y+=this.speed;this.rot+=this.rv;this.x+=Math.sin(this.y*0.06)*0.8;if(this.y>H+20)this.y=-20;
+ctx.save();ctx.globalAlpha=0.5;ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+ctx.fillStyle=this.color;ctx.shadowColor='#f59e0b';ctx.shadowBlur=5;
+ctx.beginPath();ctx.ellipse(0,0,this.w/2,this.h/2,0,0,7);ctx.fill();ctx.restore()};
+for(var i=0;i<15;i++)shavings.push(new Shaving());
+function animate(){requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+for(var i=0;i<shavings.length;i++)shavings[i].draw();
+for(var i=blades.length-1;i>=0;i--){blades[i].draw();if(blades[i].life<0.1)blades.splice(i,1)}
+for(var i=lines.length-1;i>=0;i--){lines[i].draw();if(lines[i].len>=lines[i].maxLen)lines[i].opacity-=0.003;if(lines[i].opacity<0.02)lines.splice(i,1)}}
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
 </script>
 
 </body>

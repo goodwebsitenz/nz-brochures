@@ -112,6 +112,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
@@ -132,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -259,21 +261,22 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="tel:0279252192" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
 
 <script>
-setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
-const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-setTimeout(() => {
-const heroBtn = document.querySelector('.hero-content .btn');
-const emergencyBtn = document.querySelector('.emergency-btn');
-if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
+(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+function setup(){
+var bubbles=[];for(var i=0;i<30;i++){bubbles.push({x:Math.random()*W,y:Math.random()*H,r:4+Math.random()*16,speed:0.3+Math.random()*0.8,wobble:Math.random()*6,op:0.3+Math.random()*0.3})}
+function animate(){requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+for(var i=0;i<bubbles.length;i++){var b=bubbles[i];b.y-=b.speed;b.wobble+=0.02;b.x+=Math.sin(b.wobble)*0.4;if(b.y<-20){b.y=H+10;b.x=Math.random()*W;b.r=4+Math.random()*16;b.speed=0.3+Math.random()*0.8}
+ctx.save();ctx.globalAlpha=b.op;
+ctx.strokeStyle='rgba(56,189,248,0.3)';ctx.lineWidth=2;ctx.shadowColor='#38bdf8';ctx.shadowBlur=8;
+ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,7);ctx.stroke();
+ctx.fillStyle='rgba(255,255,255,0.12)';ctx.shadowBlur=0;
+ctx.beginPath();ctx.arc(b.x-b.r*0.25,b.y-b.r*0.3,b.r*0.3,0,7);ctx.fill();
+ctx.restore()}
 }
-}, 3000);
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
 </script>
 
 </body>

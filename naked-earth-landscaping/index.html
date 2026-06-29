@@ -112,6 +112,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
@@ -132,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -259,21 +261,50 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="tel:0210435216" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
 
 <script>
-setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
-const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-setTimeout(() => {
-const heroBtn = document.querySelector('.hero-content .btn');
-const emergencyBtn = document.querySelector('.emergency-btn');
-if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
+(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+function setup(){
+var leaves=[];function Leaf(){this.x=-50;this.y=40+Math.random()*(H-100);this.w=18+Math.random()*26;this.h=9+Math.random()*16;this.speed=0.3+Math.random()*0.7;this.rot=Math.random()*6;this.rv=(Math.random()-0.5)*0.04;this.color='#'+['22c55e','16a34a','4ade80','86efac','bbf7d0'][Math.floor(Math.random()*5)];this.drift=Math.random()*5}
+Leaf.prototype.draw=function(){this.x+=this.speed;this.y+=Math.sin(this.x*0.02+this.drift)*0.6;this.rot+=this.rv;if(this.x>W+60)this.x=-60;
+ctx.save();ctx.globalAlpha=0.7;ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=10;
+ctx.beginPath();ctx.ellipse(0,0,this.w/2,this.h/2,0,0,7);ctx.fill();
+ctx.fillStyle='rgba(255,255,255,0.12)';ctx.beginPath();ctx.ellipse(-this.w*0.1,-this.h*0.1,this.w*0.15,this.h*0.15,0,0,7);ctx.fill();ctx.restore()};
+for(var i=0;i<10;i++)leaves.push(new Leaf());
+var flowers=[];function Flower(){this.x=60+Math.random()*(W-120);this.y=80+Math.random()*(H-130);this.petals=6+Math.floor(Math.random()*5);this.r=14+Math.random()*20;this.color='#'+['ec4899','d946ef','f43f5e','f97316','fbbf24','38bdf8'][Math.floor(Math.random()*6)];this.bud=0;this.phase=Math.random()*6}
+Flower.prototype.draw=function(t){if(this.bud<1)this.bud+=0.005;
+ctx.save();ctx.globalAlpha=Math.min(1,this.bud);ctx.translate(this.x,this.y);
+for(var i=0;i<this.petals;i++){var a=(i/this.petals)*7+Math.sin(t*0.3+this.phase)*0.15;ctx.save();ctx.rotate(a);
+ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=15;
+ctx.beginPath();ctx.ellipse(0,-this.r*this.bud,this.r*0.35*this.bud,this.r*0.6*this.bud,0,0,7);ctx.fill();ctx.restore()}
+ctx.fillStyle='#fbbf24';ctx.shadowBlur=5;ctx.beginPath();ctx.arc(0,0,this.r*0.3*this.bud,0,7);ctx.fill();ctx.restore()};
+setInterval(function(){if(flowers.length<10)flowers.push(new Flower())},2000+Math.random()*3000);
+var butterflies=[];function Butterfly(){this.x=Math.random()*W;this.y=Math.random()*H*0.6;this.targetX=Math.random()*W;this.targetY=Math.random()*H*0.6;this.speed=0.5+Math.random()*0.8;this.size=10+Math.random()*14;this.flap=0;this.opacity=0.6+Math.random()*0.3}
+Butterfly.prototype.draw=function(t){this.flap+=0.08;var dx=this.targetX-this.x;var dy=this.targetY-this.y;var dist=Math.sqrt(dx*dx+dy*dy);
+if(dist>5){this.x+=dx*0.012*this.speed;this.y+=dy*0.012*this.speed}else{this.targetX=Math.random()*W;this.targetY=Math.random()*H*0.6}
+ctx.save();ctx.globalAlpha=this.opacity;ctx.translate(this.x,this.y);var angle=Math.atan2(dy,dx);
+ctx.save();ctx.rotate(angle+Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx.shadowColor='#f472b6';ctx.shadowBlur=10;
+ctx.beginPath();ctx.ellipse(0,-this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
+ctx.save();ctx.rotate(angle-Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx.shadowBlur=10;
+ctx.beginPath();ctx.ellipse(0,this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
+ctx.fillStyle='#4a044e';ctx.beginPath();ctx.ellipse(0,0,2,this.size*0.25,0,0,7);ctx.fill();ctx.restore()};
+setInterval(function(){if(butterflies.length<4)butterflies.push(new Butterfly())},3000+Math.random()*5000);
+var grass=[];for(var i=0;i<60;i++){grass.push({x:Math.random()*W,y:80+Math.random()*(H-100),h:30+Math.random()*55,w:2+Math.random()*4,phase:Math.random()*6,speed:0.2+Math.random()*0.4,grown:Math.random(),color:'#'+['22c55e','16a34a','4ade80'][Math.floor(Math.random()*3)]})}
+var rays=[];for(var i=0;i<5;i++){rays.push({x:Math.random()*W,angle:-0.5-Math.random()*0.3,speed:0.08+Math.random()*0.2,opacity:0.03+Math.random()*0.03})}
+function animate(t){t=t||0;requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+for(var i=0;i<grass.length;i++){var g=grass[i];if(g.grown<1)g.grown+=0.01;var gh=g.h*Math.min(1,g.grown);var sway=Math.sin(t*0.003*g.speed+g.phase)*5;
+ctx.save();ctx.globalAlpha=0.5+g.grown*0.3;ctx.strokeStyle=g.color;ctx.lineWidth=g.w;ctx.lineCap='round';ctx.shadowColor=g.color;ctx.shadowBlur=3;
+ctx.beginPath();ctx.moveTo(g.x,g.y);ctx.lineTo(g.x+sway,g.y-gh);ctx.stroke();ctx.restore()}
+for(var i=0;i<leaves.length;i++)leaves[i].draw();
+for(var i=0;i<flowers.length;i++){if(flowers[i].bud<0.01)continue;flowers[i].draw(t)}
+for(var i=0;i<butterflies.length;i++)butterflies[i].draw(t);
+for(var i=0;i<rays.length;i++){var r=rays[i];r.angle+=r.speed*0.002;
+ctx.save();ctx.globalAlpha=r.opacity;ctx.fillStyle='#fbbf24';ctx.shadowColor='#fbbf24';ctx.shadowBlur=60;
+ctx.beginPath();ctx.ellipse(r.x,H,r.angle*H,50,0,0,Math.PI);ctx.fill();ctx.restore()}
 }
-}, 3000);
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
 </script>
 
 </body>

@@ -112,6 +112,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#lightning-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
@@ -132,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="lightning-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -259,21 +261,28 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="tel:068337689" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
 
 <script>
-setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
-const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-setTimeout(() => {
-const heroBtn = document.querySelector('.hero-content .btn');
-const emergencyBtn = document.querySelector('.emergency-btn');
-if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
-}
-}, 3000);
+(function(){var c=document.getElementById('lightning-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+function setup(){
+var bolts=[];
+function Bolt(){this.x=-50-Math.random()*20;this.y=40+Math.random()*(H-80);this.targetX=W+50;this.speed=3+Math.random()*5;this.segments=[];this.life=1;this.thickness=2+Math.random()*3;this.build()}
+Bolt.prototype.build=function(){var pts=[{x:this.x,y:this.y}];var segs=6+Math.floor(Math.random()*4);for(var i=0;i<segs;i++){var p=pts[pts.length-1];var dx=this.targetX-p.x;var dy=(Math.random()-0.5)*80;pts.push({x:p.x+dx/segs,y:p.y+dy})};this.segments=pts}
+Bolt.prototype.draw=function(t){if(this.life<=0)return;this.life-=0.015;if(this.life<0)return;
+ctx.save();ctx.globalAlpha=Math.max(0,this.life)*0.5;
+ctx.strokeStyle='#60a5fa';ctx.lineWidth=this.thickness;ctx.shadowColor='#60a5fa';ctx.shadowBlur=15;
+ctx.beginPath();ctx.moveTo(this.segments[0].x,this.segments[0].y);
+for(var i=1;i<this.segments.length;i++){var s=this.segments[i];ctx.lineTo(s.x+Math.sin(t*0.02+i*0.3)*2,s.y+Math.cos(t*0.03+i*0.5)*2)};ctx.stroke();
+ctx.strokeStyle='rgba(255,255,255,0.25)';ctx.lineWidth=this.thickness*0.3;
+ctx.beginPath();ctx.moveTo(this.segments[0].x,this.segments[0].y);
+for(var i=1;i<this.segments.length;i++){var s=this.segments[i];ctx.lineTo(s.x,s.y)};ctx.stroke();
+for(var i=0;i<2;i++){var idx=2+Math.floor(Math.random()*(this.segments.length-3));var sp=this.segments[idx];ctx.fillStyle='rgba(251,191,36,'+(this.life*0.4)+')';ctx.shadowColor='#fbbf24';ctx.shadowBlur=8;ctx.beginPath();ctx.arc(sp.x,sp.y,1.5+Math.random()*2,0,7);ctx.fill()}
+ctx.restore()};
+setInterval(function(){if(bolts.length<2)bolts.push(new Bolt())},800+Math.random()*1500);
+function animate(t){t=t||0;requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+for(var i=bolts.length-1;i>=0;i--){bolts[i].draw(t/60);if(bolts[i].life<=0)bolts.splice(i,1)}}
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
 </script>
 
 </body>
