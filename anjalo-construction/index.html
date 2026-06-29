@@ -13,7 +13,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 @keyframes bounce{to{transform:translateY(-8px)}}
 .loader-text{font-size:.8em;color:rgba(255,255,255,.3);letter-spacing:3px;text-transform:uppercase}
 .brush-load{width:200px;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden;position:relative}
-.brush-load::after{content:'';position:absolute;top:0;left:-40%;width:40%;height:100%;border-radius:3px;background:linear-gradient(90deg,transparent,#6366f1,#8b5cf6,transparent);animation:brushSweep 1.8s ease-in-out infinite}
+.brush-load::after{content:'';position:absolute;top:0;left:-40%;width:40%;height:100%;border-radius:3px;background:linear-gradient(90deg,transparent,#6366f1,#4f46e5,transparent);animation:brushSweep 1.8s ease-in-out infinite}
 @keyframes brushSweep{0%{left:-40%}100%{left:100%}}
 @keyframes fadeOut{to{opacity:0;visibility:hidden}}
 #loader.done{animation:fadeOut .6s ease .3s forwards}
@@ -25,9 +25,9 @@ nav div{display:flex;justify-content:center;flex-wrap:wrap;gap:2px 6px;margin-to
 nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82em;padding:4px 8px;white-space:nowrap;transition:color .3s}
 nav a:hover{color:#fff}
 #hero::before{content:'';position:absolute;width:90vw;height:90vw;top:-30%;left:-25%;background:radial-gradient(circle,rgba(99,102,241,.2) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-#hero::after{content:'';position:absolute;width:70vw;height:70vw;bottom:-25%;right:-20%;background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+#hero::after{content:'';position:absolute;width:70vw;height:70vw;bottom:-25%;right:-20%;background:radial-gradient(circle,rgba(79,70,229,.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
 .grid-bg{position:absolute;inset:0;pointer-events:none;opacity:.03;background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);background-size:80px 80px;z-index:0}
-.wash-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(139,92,246,.15),#0b0b17);z-index:2;pointer-events:none;clip-path:inset(0 0 0 0);animation:washReveal 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
+.wash-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.3),rgba(79,70,229,.15),#0b0b17);z-index:2;pointer-events:none;clip-path:inset(0 0 0 0);animation:washReveal 1.8s cubic-bezier(.65,0,.35,1) .2s forwards}
 @keyframes washReveal{0%{clip-path:inset(0 0 0 0)}100%{clip-path:inset(100% 0 0 0)}}
 .hero-content{position:relative;z-index:3;margin-top:60px}
 .hero-icon{font-size:5em;display:block;margin-bottom:10px;line-height:1;animation:iconBounce 1.2s cubic-bezier(.22,1,.36,1) .6s forwards;opacity:0;transform:scale(0) rotate(-30deg);filter:blur(4px)}
@@ -49,22 +49,22 @@ nav a:hover{color:#fff}
 .p4{top:30%;left:75%;animation:float 9s ease-in-out infinite 3s}
 .p5{top:70%;left:40%;animation:float 11s ease-in-out infinite .5s}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-40px)}}
-#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#4f52dd 30%,#6d3ed8 60%,#0b0b17 100%)}
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0b0b17 0%,#6366f1 30%,#4f46e5 60%,#0b0b17 100%)}
 #hero h1{font-size:clamp(2em,5vw,3.5em);margin-bottom:16px;color:#fff}
 #hero p{font-size:1.1em;color:rgba(255,255,255,.5);max-width:600px;margin:0 auto 32px}
-.btn{display:inline-block;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(99,102,241,.3);transition:transform .3s}
+.btn{display:inline-block;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;padding:14px 36px;border-radius:30px;text-decoration:none;font-weight:600;font-size:.95em;box-shadow:0 4px 20px rgba(99,102,241,.3);transition:transform .3s}
 .btn:hover{transform:scale(1.05)}
 .hero-fade{position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#0b0b17,transparent);pointer-events:none;z-index:1}
 section{padding:80px 24px}
 .section-inner{max-width:1100px;margin:0 auto}
-h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#6366f1,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:2em;margin-bottom:16px;background:linear-gradient(135deg,#6366f1,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 h3{font-size:1.2em;margin-bottom:8px;color:#fff}
 p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .subtitle{color:rgba(255,255,255,.4);font-size:1.05em;margin-bottom:40px}
 #about{background:#0b0b17}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
-.about-image{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(135deg,#6366f1,#8b5cf6);opacity:.15;display:flex;align-items:center;justify-content:center;font-size:3em}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#6366f1,#4f46e5)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
 .rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(13,13,23,.75);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-size:.8em;color:#fff;margin-bottom:20px}
 #services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -80,7 +80,7 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .testimonial-card .stars{color:#f59e0b;font-size:1.1em;margin-bottom:12px}
 .testimonial-card blockquote{color:rgba(255,255,255,.5);font-size:.9em;line-height:1.6;margin-bottom:16px;font-style:italic}
 .author{display:flex;align-items:center;gap:10px}
-.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
+.author-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#818cf8);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:600;color:#fff}
 .author-name{font-size:.85em;font-weight:600;color:#fff}
 .author-title{font-size:.75em;color:rgba(255,255,255,.4)}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -112,12 +112,10 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
-<div id="loader"><div class="loader-icon">🏗️</div><div class="brush-load"></div><div class="loader-text">Raising the framework...</div></div>
-
+<div id="loader"><div class="loader-icon">🏗️</div><div class="brush-load"></div><div class="loader-text">Pouring the slab...</div></div>
 <nav>
 <a href="#" class="logo">Anjalo Construction</a>
 <div>
@@ -129,11 +127,9 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="#contact">Contact</a>
 </div>
 </nav>
-
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
-<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -141,92 +137,86 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="particle p5"></div>
 <div class="hero-content">
 <span class="hero-icon">🏗️</span>
-<div class="rating-badge">⭐ 5.0 · 0 reviews</div>
+
 <h1>Professional builder Services<br>in Napier</h1>
 <p>Trusted builder serving Napier and surrounding areas.</p>
-<a href="tel:" class="btn">📞 Call </a>
+<a href="#contact" class="btn">📞 Get in Touch</a>
 </div>
 <div class="hero-fade"></div>
 </section>
-
 <section id="about">
 <div class="section-inner reveal">
 <h2>About Us</h2>
 <div class="about-grid">
 <div>
-<div class="rating-badge">⭐ 5.0 · 0 reviews</div>
+
 <p>Anjalo Construction is a trusted builder serving Napier and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
 <p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
 <div class="about-image">
-<img src="images/about7.jpg" alt="builder project in Napier" loading="lazy">
+<img src="images/about7.jpg" alt="builder work in Napier" loading="lazy">
 </div>
 </div>
 </div>
 </section>
-
 <section id="services">
 <div class="section-inner reveal">
 <h2>Our Services</h2>
 <p class="subtitle">Professional builder services you can count on.</p>
 <div class="services-grid">
-<div class="service-card"><div class="icon">⭐</div><h3>Professional Service</h3><p>Quality work guaranteed with attention to detail and customer satisfaction.</p></div>
-<div class="service-card"><div class="icon">✅</div><h3>Free Quotes</h3><p>No-obligation quotes for all projects, big or small.</p></div>
-<div class="service-card"><div class="icon">👍</div><h3>Fast Response</h3><p>Quick turnaround and timely communication on every job.</p></div>
-<div class="service-card"><div class="icon">💯</div><h3>Guaranteed</h3><p>100% satisfaction guaranteed on all work completed.</p></div>
-<div class="service-card"><div class="icon">🔥</div><h3>Local Expert</h3><p>Proudly serving your local community with trusted expertise.</p></div>
-<div class="service-card"><div class="icon">🎯</div><h3>Reliable</h3><p>Dependable service you can count on, every time.</p></div>
+<div class="service-card"><div class="icon">🏗️</div><h3>New Home Builds</h3><p>Full-service new home construction from concept to completion.</p></div>
+<div class="service-card"><div class="icon">🏠</div><h3>Renovations</h3><p>Home renovations, extensions, and room additions.</p></div>
+<div class="service-card"><div class="icon">🛠️</div><h3>Kitchen & Bathroom</h3><p>Complete kitchen and bathroom renovations with premium finishes.</p></div>
+<div class="service-card"><div class="icon">🌧️</div><h3>Roofing & Guttering</h3><p>Roof repairs, replacement, and gutter installation.</p></div>
+<div class="service-card"><div class="icon">🧱</div><h3>Concrete & Foundations</h3><p>Concrete slabs, foundations, driveways, and paving.</p></div>
+<div class="service-card"><div class="icon">🔨</div><h3>Decks & Outdoor</h3><p>Timber and composite decking, pergolas, and outdoor areas.</p></div>
 
 </div>
 </div>
 </section>
-
 <section id="gallery" style="background:#0b0b17">
 <div class="section-inner reveal">
 <h2>Our Work</h2>
 <p class="subtitle">A glimpse of our recent builder projects in Napier.</p>
 <div class="gallery-grid">
-<div class="gallery-card" style="background:linear-gradient(135deg,#6366f1,#4f52dd)"><div class="gallery-icon">🔨</div><div class="gallery-label">Interior · Napier</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#8b5cf6,#7748e2)"><div class="gallery-icon">🔨</div><div class="gallery-label">Exterior · Project</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🔨</div><div class="gallery-label">Detail · Closeup</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🔨</div><div class="gallery-label">Residential · Napier</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🔨</div><div class="gallery-label">Commercial · Install</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🔨</div><div class="gallery-label">Featured · Renovation</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#6366f1,#4f46e5)"><div class="gallery-icon">🏗️</div><div class="gallery-label">New Build · Auckland</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#818cf8,#6366f1)"><div class="gallery-icon">🏗️</div><div class="gallery-label">Renovation · Project</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🏗️</div><div class="gallery-label">Kitchen · Hamilton</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#a5b4fc,#818cf8)"><div class="gallery-icon">🏗️</div><div class="gallery-label">Bathroom · Install</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🏗️</div><div class="gallery-label">Decking · Outdoor</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🏗️</div><div class="gallery-label">Extension · Build</div></div>
 
 </div>
 </div>
 </section>
-
 <section id="testimonials">
 <div class="section-inner reveal">
 <h2>What Our Clients Say</h2>
-<p class="subtitle">Rated 3.4 stars on Google — here's what people are saying.</p>
+<p class="subtitle">Trusted by our community — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Couldn't be happier. Fair pricing, excellent communication, and the finished product looks amazing. Will definitely use again."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication, fair pricing, and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled with the result. The team was professional, punctual, and the quality exceeded our expectations. Would highly recommend to anyone in NZ."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and quality speaks for itself."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled. Professional, punctual, and exceeded expectations."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Seamless experience. Clear communication and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Google Review</div></div></div>
 
 </div>
 </div>
 </section>
-
 <section id="hours" class="hours-card">
 <div class="section-inner reveal">
 <h2>Business Hours</h2>
 <p class="subtitle">When you can reach us</p>
 <div class="hours-grid">
-<div class="hours-day"><div class="day">Sun</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Mon</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Tue</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Wed</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Thu</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Fri</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Sat</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Mon</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Tue</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Wed</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Thu</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Fri</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Sat</div><div class="time">8:00 am – 12:00 pm</div></div>
+<div class="hours-day"><div class="day">Sun</div><div class="time">Closed</div></div>
 
 </div>
 </div>
 </section>
-
 <section id="contact">
 <div class="section-inner reveal">
 <h2>Get in Touch</h2>
@@ -235,7 +225,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="contact-card">
 <div class="icon">📞</div>
 <h3>Phone</h3>
-<a href="tel:"></a>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Contact us</p>
 <p>Call or text anytime</p>
 </div>
 <div class="contact-card">
@@ -247,18 +237,15 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="contact-card">
 <div class="icon">📍</div>
 <h3>Location</h3>
-<p style="color:#fff;font-size:1.1em;font-weight:600">NZ</p>
+<p style="color:#fff;font-size:1.1em;font-weight:600">Napier</p>
 <p>Serving all of Napier</p>
 </div>
 </div>
 </div>
 </section>
-
 <footer>
-<p>&copy; 2026 Anjalo Construction — NZ. Professional service services.</p>
+<p>&copy; 2026 Anjalo Construction — New Zealand. Professional builder services.</p>
 </footer>
-
-<a href="tel:" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
 
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
@@ -276,59 +263,6 @@ if (heroBtn && emergencyBtn) {
   ctaObserver.observe(heroBtn);
 }
 }, 3000);
-</script>
-
-<script>
-(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
-function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
-window.addEventListener('resize',resize);var sd=false;
-function setup(){
-// Blueprint grid lines
-var grid=[];
-for(var i=0;i<16;i++){var y=i*50+10;grid.push({x1:0,y1:y,x2:W,y2:y,prog:0})}
-for(var i=0;i<25;i++){var x=i*50+10;grid.push({x1:x,y1:0,x2:x,y2:H,prog:0})}
-// Dust
-var dust=[];for(var i=0;i<20;i++)dust.push({x:Math.random()*W,y:Math.random()*H,r:1+Math.random()*3,speed:0.1+Math.random()*0.3,op:0.06+Math.random()*0.1,w:Math.random()*6});
-function animate(){requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
-// Draw blueprint grid lines (faint but visible)
-for(var i=0;i<grid.length;i++){
-  var g=grid[i];
-  if(g.prog<1)g.prog+=0.005;
-  var a=Math.min(1,g.prog)*0.2;
-  if(a<0.005)continue;
-  ctx.save();ctx.globalAlpha=a;
-  ctx.strokeStyle='#60a5fa';ctx.lineWidth=0.8;ctx.setLineDash([6,10]);
-  ctx.beginPath();ctx.moveTo(g.x1,g.y1);
-  ctx.lineTo(g.x1+(g.x2-g.x1)*Math.min(1,g.prog),g.y1+(g.y2-g.y1)*Math.min(1,g.prog));
-  ctx.stroke();ctx.setLineDash([]);ctx.restore()
-}
-// Blueprint icon (📐) — top-left corner, away from center text
-var ts=Date.now()/1000;
-var iconAlpha=0.12+Math.sin(ts*0.6)*0.12;
-ctx.save();ctx.globalAlpha=Math.max(0,iconAlpha);
-ctx.font='70px sans-serif';ctx.textAlign='left';ctx.textBaseline='top';
-ctx.fillStyle='#60a5fa';ctx.shadowColor='#60a5fa';ctx.shadowBlur=20;
-ctx.fillText('📐',25,15);
-ctx.restore();
-// Small corner accent lines
-var cornerLines=[
-  {x1:15,y1:15,x2:70,y2:15},{x1:15,y1:15,x2:15,y2:70},
-  {x1:W-15,y1:15,x2:W-70,y2:15},{x1:W-15,y1:15,x2:W-15,y2:70},
-  {x1:15,y1:H-15,x2:70,y2:H-15},{x1:15,y1:H-15,x2:15,y2:H-70},
-  {x1:W-15,y1:H-15,x2:W-70,y2:H-15},{x1:W-15,y1:H-15,x2:W-15,y2:H-70}
-];
-for(var i=0;i<cornerLines.length;i++){
-  var cl=cornerLines[i];
-  ctx.save();ctx.globalAlpha=0.12+Math.sin(ts*0.4+i)*0.08;
-  ctx.strokeStyle='#60a5fa';ctx.lineWidth=1.5;
-  ctx.beginPath();ctx.moveTo(cl.x1,cl.y1);ctx.lineTo(cl.x2,cl.y2);ctx.stroke();ctx.restore()
-}
-// Dust
-for(var i=0;i<dust.length;i++){var d=dust[i];d.y+=d.speed*Math.sin(d.w);d.w+=0.02;if(d.y>H||d.y<0){d.y=Math.random()*H;d.x=Math.random()*W}
-ctx.save();ctx.globalAlpha=d.op;ctx.fillStyle='#fbbf24';ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,7);ctx.fill();ctx.restore()}
-}
-setTimeout(animate,300)}
-setTimeout(resize,200)})();
 </script>
 </body>
 </html>

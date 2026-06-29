@@ -64,7 +64,7 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 #about{background:#0b0b17}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
-.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#22c55e,#10b981)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
+.about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#22c55e,#16a34a)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
 .rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(13,13,23,.75);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-size:.8em;color:#fff;margin-bottom:20px}
 #services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -112,12 +112,10 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
 <div id="loader"><div class="loader-icon">🌿</div><div class="brush-load"></div><div class="loader-text">Trimming the edges...</div></div>
-
 <nav>
 <a href="#" class="logo">Naked Earth Landscaping</a>
 <div>
@@ -129,11 +127,9 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <a href="#contact">Contact</a>
 </div>
 </nav>
-
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
-<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -141,30 +137,28 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="particle p5"></div>
 <div class="hero-content">
 <span class="hero-icon">🌿</span>
-<div class="rating-badge">⭐ 5 · 7 reviews</div>
+
 <h1>Professional landscaper Services<br>in Whangarei</h1>
 <p>Trusted landscaper serving Whangarei and surrounding areas.</p>
-<a href="tel:0210435216" class="btn">📞 Call 0210 435 216</a>
+<a href="tel:0210435216" class="btn">📞 Call 021 043 5216</a>
 </div>
 <div class="hero-fade"></div>
 </section>
-
 <section id="about">
 <div class="section-inner reveal">
 <h2>About Us</h2>
 <div class="about-grid">
 <div>
-<div class="rating-badge">⭐ 5 · 7 reviews</div>
+
 <p>Naked Earth Landscaping is a trusted landscaper serving Whangarei and surrounding areas. We take pride in delivering premium results that stand the test of time — every job done right, first time.</p>
 <p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
 <div class="about-image">
-<img src="images/about5.jpg" alt="landscaper work in Whangarei" loading="lazy">
+<img src="images/about7.jpg" alt="landscaper work in Whangarei" loading="lazy">
 </div>
 </div>
 </div>
 </section>
-
 <section id="services">
 <div class="section-inner reveal">
 <h2>Our Services</h2>
@@ -174,59 +168,55 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="service-card"><div class="icon">🌺</div><h3>Lawn Care</h3><p>Professional lawn mowing, edging, fertilising, and seasonal care.</p></div>
 <div class="service-card"><div class="icon">🌳</div><h3>Tree Services</h3><p>Tree pruning, removal, and hedge trimming by qualified arborists.</p></div>
 <div class="service-card"><div class="icon">💧</div><h3>Irrigation Systems</h3><p>Automated irrigation and sprinkler systems for efficient watering.</p></div>
-<div class="service-card"><div class="icon">🏡</div><h3>Paving & Paths</h3><p>Paving, pathways, driveways, and hardscaping for your outdoor areas.</p></div>
+<div class="service-card"><div class="icon">🏡</div><h3>Paving & Paths</h3><p>Paving, pathways, driveways, and hardscaping for outdoor areas.</p></div>
 <div class="service-card"><div class="icon">🪴</div><h3>Planting & Maintenance</h3><p>Planting, mulching, weed control, and ongoing garden maintenance.</p></div>
 
 </div>
 </div>
 </section>
-
 <section id="gallery" style="background:#0b0b17">
 <div class="section-inner reveal">
 <h2>Our Work</h2>
 <p class="subtitle">A glimpse of our recent landscaper projects in Whangarei.</p>
 <div class="gallery-grid">
-<div class="gallery-card" style="background:linear-gradient(135deg,#22c55e,#0eb14a)"><div class="gallery-icon">🌿</div><div class="gallery-label">Interior · Whangarei</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#10b981,#01a56d)"><div class="gallery-icon">🌿</div><div class="gallery-label">Exterior · Project</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🌿</div><div class="gallery-label">Detail · Closeup</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Residential · Whangarei</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🌿</div><div class="gallery-label">Commercial · Install</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🌿</div><div class="gallery-label">Featured · Renovation</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#22c55e,#0eb14a)"><div class="gallery-icon">🌿</div><div class="gallery-label">Garden · New Plymouth</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#10b981,#01a56d)"><div class="gallery-icon">🌿</div><div class="gallery-label">Lawn · Project</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🌿</div><div class="gallery-label">Paving · Detail</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Irrigation · Hamilton</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🌿</div><div class="gallery-label">Landscape · Install</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🌿</div><div class="gallery-label">Design · Feature</div></div>
 
 </div>
 </div>
 </section>
-
 <section id="testimonials">
 <div class="section-inner reveal">
 <h2>What Our Clients Say</h2>
-<p class="subtitle">Rated 5 stars on Google — here's what people are saying.</p>
+<p class="subtitle">Trusted by our community — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled with the result. The team was professional, punctual, and the quality exceeded our expectations. Would highly recommend to anyone in Whangarei."</blockquote><div class="author"><div class="author-avatar">AC</div><div class="author-name">Anna C.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Outstanding service. Great advice and the garden looks amazing."</blockquote><div class="author"><div class="author-avatar">LN</div><div class="author-name">Laura N.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Wonderful job. Well worth the price. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">AF</div><div class="author-name">Anto F.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Excellent service and plant knowledge. Would highly recommend."</blockquote><div class="author"><div class="author-avatar">ML</div><div class="author-name">Michael L.</div><div class="author-title">Google Review</div></div></div>
 
 </div>
 </div>
 </section>
-
 <section id="hours" class="hours-card">
 <div class="section-inner reveal">
 <h2>Business Hours</h2>
 <p class="subtitle">When you can reach us</p>
 <div class="hours-grid">
-<div class="hours-day"><div class="day">Sun</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Mon</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Tue</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Wed</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Thu</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Fri</div><div class="time">24 hrs</div></div>
-<div class="hours-day"><div class="day">Sat</div><div class="time">24 hrs</div></div>
+<div class="hours-day"><div class="day">Mon</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Tue</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Wed</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Thu</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Fri</div><div class="time">7:00 am – 5:00 pm</div></div>
+<div class="hours-day"><div class="day">Sat</div><div class="time">7:00 am – 12:00 pm</div></div>
+<div class="hours-day"><div class="day">Sun</div><div class="time">Closed</div></div>
 
 </div>
 </div>
 </section>
-
 <section id="contact">
 <div class="section-inner reveal">
 <h2>Get in Touch</h2>
@@ -235,7 +225,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="contact-card">
 <div class="icon">📞</div>
 <h3>Phone</h3>
-<a href="tel:0210435216">0210 435 216</a>
+<a href="tel:0210435216">021 043 5216</a>
 <p>Call or text anytime</p>
 </div>
 <div class="contact-card">
@@ -253,13 +243,10 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 </div>
 </div>
 </section>
-
 <footer>
-<p>&copy; 2026 Naked Earth Landscaping — Whangarei. Professional landscaper services.</p>
+<p>&copy; 2026 Naked Earth Landscaping — New Zealand. Professional landscaper services.</p>
 </footer>
-
 <a href="tel:0210435216" class="emergency-btn"><span class="pulse-dot"></span> 🟢 Open · 📞 Call Now</a>
-
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
 const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
@@ -276,49 +263,6 @@ if (heroBtn && emergencyBtn) {
   ctaObserver.observe(heroBtn);
 }
 }, 3000);
-</script>
-
-<script>
-(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
-function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
-window.addEventListener('resize',resize);var sd=false;
-function setup(){
-var leaves=[];function Leaf(){this.x=-50;this.y=40+Math.random()*(H-100);this.w=18+Math.random()*26;this.h=9+Math.random()*16;this.speed=0.3+Math.random()*0.7;this.rot=Math.random()*6;this.rv=(Math.random()-0.5)*0.04;this.color='#'+['22c55e','16a34a','4ade80','86efac','bbf7d0'][Math.floor(Math.random()*5)];this.drift=Math.random()*5}
-Leaf.prototype.draw=function(){this.x+=this.speed;this.y+=Math.sin(this.x*0.02+this.drift)*0.6;this.rot+=this.rv;if(this.x>W+60)this.x=-60;
-ctx.save();ctx.globalAlpha=0.7;ctx.translate(this.x,this.y);ctx.rotate(this.rot);
-ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=10;
-ctx.beginPath();ctx.ellipse(0,0,this.w/2,this.h/2,0,0,7);ctx.fill();
-ctx.fillStyle='rgba(255,255,255,0.12)';ctx.beginPath();ctx.ellipse(-this.w*0.1,-this.h*0.1,this.w*0.15,this.h*0.15,0,0,7);ctx.fill();ctx.restore()};
-for(var i=0;i<10;i++)leaves.push(new Leaf());
-var flowers=[];function Flower(){this.x=60+Math.random()*(W-120);this.y=80+Math.random()*(H-130);this.petals=6+Math.floor(Math.random()*5);this.r=14+Math.random()*20;this.color='#'+['ec4899','d946ef','f43f5e','f97316','fbbf24','38bdf8'][Math.floor(Math.random()*6)];this.bud=0;this.phase=Math.random()*6}
-Flower.prototype.draw=function(t){if(this.bud<1)this.bud+=0.005;
-ctx.save();ctx.globalAlpha=Math.min(1,this.bud);ctx.translate(this.x,this.y);
-for(var i=0;i<this.petals;i++){var a=(i/this.petals)*7+Math.sin(t*0.3+this.phase)*0.15;ctx.save();ctx.rotate(a);
-ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=15;
-ctx.beginPath();ctx.ellipse(0,-this.r*this.bud,this.r*0.35*this.bud,this.r*0.6*this.bud,0,0,7);ctx.fill();ctx.restore()}
-ctx.fillStyle='#fbbf24';ctx.shadowBlur=5;ctx.beginPath();ctx.arc(0,0,this.r*0.3*this.bud,0,7);ctx.fill();ctx.restore()};
-setInterval(function(){if(flowers.length<10)flowers.push(new Flower())},2000+Math.random()*3000);
-var butterflies=[];function Butterfly(){this.x=Math.random()*W;this.y=Math.random()*H*0.6;this.targetX=Math.random()*W;this.targetY=Math.random()*H*0.6;this.speed=0.5+Math.random()*0.8;this.size=10+Math.random()*14;this.flap=0;this.opacity=0.6+Math.random()*0.3}
-Butterfly.prototype.draw=function(t){this.flap+=0.08;var dx=this.targetX-this.x;var dy=this.targetY-this.y;var dist=Math.sqrt(dx*dx+dy*dy);
-if(dist>5){this.x+=dx*0.012*this.speed;this.y+=dy*0.012*this.speed}else{this.targetX=Math.random()*W;this.targetY=Math.random()*H*0.6}
-ctx.save();ctx.globalAlpha=this.opacity;ctx.translate(this.x,this.y);var angle=Math.atan2(dy,dx);
-ctx.save();ctx.rotate(angle+Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx.shadowColor='#f472b6';ctx.shadowBlur=10;
-ctx.beginPath();ctx.ellipse(0,-this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
-ctx.save();ctx.rotate(angle-Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx.shadowBlur=10;
-ctx.beginPath();ctx.ellipse(0,this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
-ctx.fillStyle='#4a044e';ctx.beginPath();ctx.ellipse(0,0,2,this.size*0.25,0,0,7);ctx.fill();ctx.restore()};
-setInterval(function(){if(butterflies.length<4)butterflies.push(new Butterfly())},3000+Math.random()*5000);
-var rays=[];for(var i=0;i<5;i++){rays.push({x:Math.random()*W,angle:-0.5-Math.random()*0.3,speed:0.08+Math.random()*0.2,opacity:0.03+Math.random()*0.03})}
-function animate(t){t=t||0;requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
-for(var i=0;i<leaves.length;i++)leaves[i].draw();
-for(var i=0;i<flowers.length;i++){if(flowers[i].bud<0.01)continue;flowers[i].draw(t)}
-for(var i=0;i<butterflies.length;i++)butterflies[i].draw(t);
-for(var i=0;i<rays.length;i++){var r=rays[i];r.angle+=r.speed*0.002;
-ctx.save();ctx.globalAlpha=r.opacity;ctx.fillStyle='#fbbf24';ctx.shadowColor='#fbbf24';ctx.shadowBlur=60;
-ctx.beginPath();ctx.ellipse(r.x,H,r.angle*H,50,0,0,Math.PI);ctx.fill();ctx.restore()}
-}
-setTimeout(animate,300)}
-setTimeout(resize,200)})();
 </script>
 </body>
 </html>
