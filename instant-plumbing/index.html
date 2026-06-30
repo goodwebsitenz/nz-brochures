@@ -65,7 +65,7 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
 .about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#38bdf8,#22d3ee)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
-.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#38bdf8;margin-bottom:20px}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(13,13,23,.75);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-size:.8em;color:#fff;margin-bottom:20px}
 #services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.services-grid{grid-template-columns:1fr}}
@@ -101,11 +101,10 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 .contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
 .contact-card .icon{font-size:2em;margin-bottom:12px}
-.contact-card a{color:#38bdf8;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card a{color:#38bdf8;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px;word-break:break-all}
 .contact-card p{font-size:.85em;margin:0}
-.emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s,transform .4s;opacity:0;transform:translateY(16px);pointer-events:none}
-.emergency-btn.show{opacity:1;transform:translateY(0);pointer-events:auto}
-.emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
+.emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s ease,transform .4s ease,visibility .4s ease;opacity:0;visibility:hidden;transform:translateY(20px);pointer-events:none}
+.emergency-btn.show{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
 .emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
 .emergency-btn .pulse-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:pulseAmber .8s ease-in-out infinite}
 @keyframes pulseAmber{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
@@ -113,6 +112,7 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
@@ -133,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -142,8 +143,8 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <span class="hero-icon">🔧</span>
 <div class="rating-badge">⭐ 4.6 · 66 reviews</div>
 <h1>Professional plumber Services<br>in Christchurch</h1>
-<p>Trusted plumber serving Christchurch and surrounding areas.</p>
-<a href="tel:0272447752" class="btn">📞 Call 027 244 7752</a>
+<p>Trusted professional serving Christchurch and surrounding areas.</p>
+<a href="tel:027 244 7752" class="btn">📞 Call 027 244 7752</a>
 </div>
 <div class="hero-fade"></div>
 </section>
@@ -158,7 +159,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
 <div class="about-image">
-<img src="images/about1.jpg" alt="plumber work in Christchurch" loading="lazy">
+<img src="images/about7.jpg" alt="work example" loading="lazy">
 </div>
 </div>
 </div>
@@ -183,14 +184,14 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="gallery" style="background:#0b0b17">
 <div class="section-inner reveal">
 <h2>Our Work</h2>
-<p class="subtitle">A glimpse of our recent plumber projects in Christchurch.</p>
+<p class="subtitle">A glimpse of our recent plumber projects in your area.</p>
 <div class="gallery-grid">
-<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#24a9e4)"><div class="gallery-icon">🔧</div><div class="gallery-label">Interior · Christchurch</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#22d3ee,#0ebfda)"><div class="gallery-icon">🔧</div><div class="gallery-label">Exterior · Project</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🔧</div><div class="gallery-label">Detail · Closeup</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🔧</div><div class="gallery-label">Residential · Christchurch</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🔧</div><div class="gallery-label">Commercial · Install</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🔧</div><div class="gallery-label">Featured · Renovation</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#24a9e4)"><div class="gallery-icon">🔧</div><div class="gallery-label">Interior </div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#22d3ee,#0ebfda)"><div class="gallery-icon">🔧</div><div class="gallery-label">Exterior Project</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🔧</div><div class="gallery-label">Detail Closeup</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🔧</div><div class="gallery-label">Residential </div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🔧</div><div class="gallery-label">Commercial Install</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🔧</div><div class="gallery-label">Featured Renovation</div></div>
 
 </div>
 </div>
@@ -201,9 +202,9 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <h2>What Our Clients Say</h2>
 <p class="subtitle">Rated 4.6 stars on Google — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Absolutely thrilled with the result. The team was professional, punctual, and the quality exceeded our expectations. Would highly recommend to anyone in Christchurch."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">AC</div><div class="author-name">Anna C.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We've used several services over the years and none compare. Attention to detail, tidy worksite, and finished on time."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">JT</div><div class="author-name">James T.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Professional from start to finish. They went above and beyond to make sure we were happy with the result."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Google Review</div></div></div>
 
 </div>
 </div>
@@ -221,7 +222,6 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="hours-day"><div class="day">Fri</div><div class="time">24 hrs</div></div>
 <div class="hours-day"><div class="day">Sat</div><div class="time">24 hrs</div></div>
 <div class="hours-day"><div class="day">Sun</div><div class="time">24 hrs</div></div>
-
 </div>
 </div>
 </section>
@@ -234,7 +234,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="contact-card">
 <div class="icon">📞</div>
 <h3>Phone</h3>
-<a href="tel:0272447752">027 244 7752</a>
+<a href="tel:027 244 7752">027 244 7752</a>
 <p>Call or text anytime</p>
 </div>
 <div class="contact-card">
@@ -257,92 +257,76 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <p>&copy; 2026 Instant Plumbing — Christchurch. Professional plumber services.</p>
 </footer>
 
-<a href="tel:0272447752" class="emergency-btn" data-hours='[]' data-247="1"><span class="pulse-dot"></span> 📞 Call Now</a>
+<a href="tel:027 244 7752" class="emergency-btn">📞 Call Now</a>
 
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
 const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Emergency button: show on scroll past CTA + show open/closed status
 setTimeout(() => {
 const heroBtn = document.querySelector('.hero-content .btn');
 const emergencyBtn = document.querySelector('.emergency-btn');
 if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-      if (!entry.isIntersecting) updateOpenStatus(emergencyBtn);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
-}
-
-function updateOpenStatus(btn) {
-  const is247 = btn.dataset['247'] === '1';
-  const hoursRaw = btn.dataset.hours;
-  
-  if (is247) {
-    btn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
-    return;
-  }
-  
-  if (!hoursRaw) return;
-  
-  try {
-    const hours = JSON.parse(hoursRaw);
-    if (!hours || hours.length === 0) return;
-    
-    const now = new Date();
-    const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-    const today = dayNames[now.getDay()];
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-    
-    // Find today's hours
-    let todayHours = '';
-    for (const entry of hours) {
-      const parts = entry.split(': ');
-      if (parts.length >= 2 && parts[0].toLowerCase().trim() === today) {
-        todayHours = parts.slice(1).join(': ').trim();
-        break;
-      }
-    }
-    
-    if (!todayHours || todayHours.toLowerCase() === 'closed') {
-      btn.innerHTML = '📞 Call Now';
-      return;
-    }
-    
-    if (todayHours.toLowerCase().includes('24 hours') || todayHours.toLowerCase().includes('open 24 hours')) {
-      btn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
-      return;
-    }
-    
-    // Parse time range like "8:00 AM – 5:00 PM"
-    const timeMatch = todayHours.match(/(\d+):(\d+)\s*(AM|PM)\s*[–-]\s*(\d+):(\d+)\s*(AM|PM)/i);
-    if (timeMatch) {
-      let [, openH, openM, openAmPm, closeH, closeM, closeAmPm] = timeMatch;
-      openH = parseInt(openH); openM = parseInt(openM);
-      closeH = parseInt(closeH); closeM = parseInt(closeM);
-      
-      if (openAmPm.toUpperCase() === 'PM' && openH !== 12) openH += 12;
-      if (openAmPm.toUpperCase() === 'AM' && openH === 12) openH = 0;
-      if (closeAmPm.toUpperCase() === 'PM' && closeH !== 12) closeH += 12;
-      if (closeAmPm.toUpperCase() === 'AM' && closeH === 12) closeH = 0;
-      
-      const openMinutes = openH * 60 + openM;
-      const closeMinutes = closeH * 60 + closeM;
-      
-      if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
-        btn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
-      } else {
-        btn.innerHTML = '📞 Call Now';
-      }
-    }
-  } catch(e) {}
+ const ctaObserver = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+ emergencyBtn.classList.toggle('show', !entry.isIntersecting);
+ });
+ }, { threshold: 0 });
+ ctaObserver.observe(heroBtn);
+ // Check if open based on hours
+ (function() {
+ var now = new Date();
+ var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+ var today = days[now.getDay()];
+ var mins = now.getHours() * 60 + now.getMinutes();
+ function parseT(s) {
+ var m = s.match(/(\d+):(\d+)\s*(am|pm)/i);
+ if (!m) return null;
+ var h = +m[1], mn = +m[2];
+ if (m[3].toLowerCase()==='pm' && h<12) h+=12;
+ if (m[3].toLowerCase()==='am' && h===12) h=0;
+ return h*60+mn;
+ }
+ var hrs = document.querySelectorAll('.hours-day');
+ var open = false;
+ hrs.forEach(function(el) {
+ if (el.querySelector('.day').textContent.trim() === today) {
+ var t = el.querySelector('.time').textContent.trim();
+ if (!t || t === 'Closed') return;
+ if (t === '24 hrs' || t === '24/7' || t === 'Open 24 hours') { open = true; return; }
+ var parts = t.split('\u2013');
+ if (parts.length < 2) parts = t.split('-');
+ if (parts.length === 2) {
+ var o = parseT(parts[0].trim()), c = parseT(parts[1].trim());
+ if (o !== null && c !== null && mins >= o && mins <= c) open = true;
+ }
+ }
+ });
+ if (open) {
+ emergencyBtn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
+ }
+ })();
 }
 }, 3000);
 </script>
 
+<script>
+(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+function setup(){
+var bubbles=[];for(var i=0;i<30;i++){bubbles.push({x:Math.random()*W,y:Math.random()*H,r:4+Math.random()*16,speed:0.3+Math.random()*0.8,wobble:Math.random()*6,op:0.3+Math.random()*0.3})}
+function animate(){requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+for(var i=0;i<bubbles.length;i++){var b=bubbles[i];b.y-=b.speed;b.wobble+=0.02;b.x+=Math.sin(b.wobble)*0.4;if(b.y<-20){b.y=H+10;b.x=Math.random()*W;b.r=4+Math.random()*16;b.speed=0.3+Math.random()*0.8}
+ctx.save();ctx.globalAlpha=b.op;
+ctx.strokeStyle='rgba(56,189,248,0.3)';ctx.lineWidth=2;ctx.shadowColor='#38bdf8';ctx.shadowBlur=8;
+ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,7);ctx.stroke();
+ctx.fillStyle='rgba(255,255,255,0.12)';ctx.shadowBlur=0;
+ctx.beginPath();ctx.arc(b.x-b.r*0.25,b.y-b.r*0.3,b.r*0.3,0,7);ctx.fill();
+ctx.restore()}
+}
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
+</script>
 </body>
 </html>

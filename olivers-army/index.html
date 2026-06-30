@@ -65,7 +65,7 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 @media(max-width:768px){.about-grid{grid-template-columns:1fr}}
 .about-image{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#22c55e,#10b981)}.about-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9;transition:transform .5s,opacity .3s}.about-image:hover img{transform:scale(1.03);opacity:1}
-.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);padding:6px 14px;border-radius:20px;font-size:.8em;color:#22c55e;margin-bottom:20px}
+.rating-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(13,13,23,.75);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-size:.8em;color:#fff;margin-bottom:20px}
 #services{background:#151527}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:768px){.services-grid{grid-template-columns:1fr}}
@@ -101,11 +101,10 @@ p{color:rgba(255,255,255,.6);line-height:1.7;font-size:.95em;margin-bottom:16px}
 @media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
 .contact-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 20px}
 .contact-card .icon{font-size:2em;margin-bottom:12px}
-.contact-card a{color:#22c55e;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px}
+.contact-card a{color:#22c55e;text-decoration:none;font-size:1.1em;font-weight:600;display:block;margin-bottom:8px;word-break:break-all}
 .contact-card p{font-size:.85em;margin:0}
-.emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s,transform .4s;opacity:0;transform:translateY(16px);pointer-events:none}
-.emergency-btn.show{opacity:1;transform:translateY(0);pointer-events:auto}
-.emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
+.emergency-btn{position:fixed;bottom:24px;right:24px;z-index:999;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;padding:14px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.85em;display:flex;align-items:center;gap:8px;box-shadow:0 6px 25px rgba(245,158,11,.35);transition:opacity .4s ease,transform .4s ease,visibility .4s ease;opacity:0;visibility:hidden;transform:translateY(20px);pointer-events:none}
+.emergency-btn.show{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
 .emergency-btn:hover{transform:scale(1.06);box-shadow:0 8px 35px rgba(245,158,11,.5)}
 .emergency-btn .pulse-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:pulseAmber .8s ease-in-out infinite}
 @keyframes pulseAmber{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
@@ -113,10 +112,11 @@ footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(255,255,255
 footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+#anim-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none}
 </style>
 </head>
 <body>
-<div id="loader"><div class="loader-icon">🌿</div><div class="brush-load"></div><div class="loader-text">Mowing the final lines...</div></div>
+<div id="loader"><div class="loader-icon">🌿</div><div class="brush-load"></div><div class="loader-text">Trimming the edges...</div></div>
 
 <nav>
 <a href="#" class="logo">Oliver's Army</a>
@@ -133,6 +133,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="hero">
 <div class="grid-bg"></div>
 <div class="wash-overlay"></div>
+<canvas id="anim-canvas"></canvas>
 <div class="particle p1"></div>
 <div class="particle p2"></div>
 <div class="particle p3"></div>
@@ -142,8 +143,8 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <span class="hero-icon">🌿</span>
 <div class="rating-badge">⭐ 4.7 · 58 reviews</div>
 <h1>Professional landscaper Services<br>in Wellington</h1>
-<p>Trusted landscaper serving Wellington and surrounding areas.</p>
-<a href="tel:0275105950" class="btn">📞 Call 027 510 5950</a>
+<p>Trusted professional serving Wellington and surrounding areas.</p>
+<a href="tel:027 510 5950" class="btn">📞 Call 027 510 5950</a>
 </div>
 <div class="hero-fade"></div>
 </section>
@@ -158,7 +159,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <p>From small residential projects to large commercial contracts, our team brings precision, care, and an eye for detail to every project we undertake.</p>
 </div>
 <div class="about-image">
-<img src="images/about4.jpg" alt="landscaper work in Wellington" loading="lazy">
+<img src="images/about7.jpg" alt="work example" loading="lazy">
 </div>
 </div>
 </div>
@@ -183,14 +184,14 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <section id="gallery" style="background:#0b0b17">
 <div class="section-inner reveal">
 <h2>Our Work</h2>
-<p class="subtitle">A glimpse of our recent landscaper projects in Wellington.</p>
+<p class="subtitle">A glimpse of our recent landscaper projects in your area.</p>
 <div class="gallery-grid">
-<div class="gallery-card" style="background:linear-gradient(135deg,#22c55e,#0eb14a)"><div class="gallery-icon">🌿</div><div class="gallery-label">Interior · Wellington</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#10b981,#01a56d)"><div class="gallery-icon">🌿</div><div class="gallery-label">Exterior · Project</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🌿</div><div class="gallery-label">Detail · Closeup</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Residential · Wellington</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🌿</div><div class="gallery-label">Commercial · Install</div></div>
-<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🌿</div><div class="gallery-label">Featured · Renovation</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#22c55e,#0eb14a)"><div class="gallery-icon">🌿</div><div class="gallery-label">Interior </div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#10b981,#01a56d)"><div class="gallery-icon">🌿</div><div class="gallery-label">Exterior Project</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><div class="gallery-icon">🌿</div><div class="gallery-label">Detail Closeup</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#34d399,#10b981)"><div class="gallery-icon">🌿</div><div class="gallery-label">Residential </div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#fb923c,#f97316)"><div class="gallery-icon">🌿</div><div class="gallery-label">Commercial Install</div></div>
+<div class="gallery-card" style="background:linear-gradient(135deg,#f472b6,#ec4899)"><div class="gallery-icon">🌿</div><div class="gallery-label">Featured Renovation</div></div>
 
 </div>
 </div>
@@ -201,9 +202,9 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <h2>What Our Clients Say</h2>
 <p class="subtitle">Rated 4.7 stars on Google — here's what people are saying.</p>
 <div class="testimonial-grid">
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Couldn't be happier. Fair pricing, excellent communication, and the finished product looks amazing. Will definitely use again."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"We've used several services over the years and none compare. Attention to detail, tidy worksite, and finished on time."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Google Review</div></div></div>
-<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication, fair pricing, and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">MW</div><div class="author-name">Mike W.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Couldn't be happier. Fair pricing, excellent communication, and the finished product looks amazing. Will definitely use again."</blockquote><div class="author"><div class="author-avatar">LK</div><div class="author-name">Lisa K.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"Highly recommend. Great work ethic, clean worksite, and the quality speaks for itself. A pleasure to deal with."</blockquote><div class="author"><div class="author-avatar">SM</div><div class="author-name">Sarah M.</div><div class="author-title">Google Review</div></div></div>
+<div class="testimonial-card"><div class="stars">⭐⭐⭐⭐⭐</div><blockquote>"From start to finish, a seamless experience. Clear communication, fair pricing, and outstanding workmanship."</blockquote><div class="author"><div class="author-avatar">RP</div><div class="author-name">Richard P.</div><div class="author-title">Google Review</div></div></div>
 
 </div>
 </div>
@@ -214,14 +215,13 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <h2>Business Hours</h2>
 <p class="subtitle">When you can reach us</p>
 <div class="hours-grid">
-<div class="hours-day"><div class="day">Mon</div><div class="time">7:30 AM – 4:30 PM</div></div>
-<div class="hours-day"><div class="day">Tue</div><div class="time">7:30 AM – 4:30 PM</div></div>
-<div class="hours-day"><div class="day">Wed</div><div class="time">7:30 AM – 4:30 PM</div></div>
-<div class="hours-day"><div class="day">Thu</div><div class="time">7:30 AM – 4:30 PM</div></div>
-<div class="hours-day"><div class="day">Fri</div><div class="time">7:30 AM – 4:00 PM</div></div>
+<div class="hours-day"><div class="day">Mon</div><div class="time">7:30 AM - 4:30 PM</div></div>
+<div class="hours-day"><div class="day">Tue</div><div class="time">7:30 AM - 4:30 PM</div></div>
+<div class="hours-day"><div class="day">Wed</div><div class="time">7:30 AM - 4:30 PM</div></div>
+<div class="hours-day"><div class="day">Thu</div><div class="time">7:30 AM - 4:30 PM</div></div>
+<div class="hours-day"><div class="day">Fri</div><div class="time">7:30 AM - 4:00 PM</div></div>
 <div class="hours-day"><div class="day">Sat</div><div class="time">Closed</div></div>
 <div class="hours-day"><div class="day">Sun</div><div class="time">Closed</div></div>
-
 </div>
 </div>
 </section>
@@ -234,7 +234,7 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <div class="contact-card">
 <div class="icon">📞</div>
 <h3>Phone</h3>
-<a href="tel:0275105950">027 510 5950</a>
+<a href="tel:027 510 5950">027 510 5950</a>
 <p>Call or text anytime</p>
 </div>
 <div class="contact-card">
@@ -257,92 +257,102 @@ footer p{font-size:.8em;color:rgba(255,255,255,.2);margin:0}
 <p>&copy; 2026 Oliver's Army — Wellington. Professional landscaper services.</p>
 </footer>
 
-<a href="tel:0275105950" class="emergency-btn" data-hours='["Monday: 7:30\u202fAM\u2009\u2013\u20094:30\u202fPM", "Tuesday: 7:30\u202fAM\u2009\u2013\u20094:30\u202fPM", "Wednesday: 7:30\u202fAM\u2009\u2013\u20094:30\u202fPM", "Thursday: 7:30\u202fAM\u2009\u2013\u20094:30\u202fPM", "Friday: 7:30\u202fAM\u2009\u2013\u20094:00\u202fPM", "Saturday: Closed", "Sunday: Closed"]' data-247="0"><span class="pulse-dot"></span> 📞 Call Now</a>
+<a href="tel:027 510 5950" class="emergency-btn">📞 Call Now</a>
 
 <script>
 setTimeout(() => document.getElementById('loader').classList.add('done'), 2200);
 const observer = new IntersectionObserver(entries => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible')}})}, {threshold: 0.15});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Emergency button: show on scroll past CTA + show open/closed status
 setTimeout(() => {
 const heroBtn = document.querySelector('.hero-content .btn');
 const emergencyBtn = document.querySelector('.emergency-btn');
 if (heroBtn && emergencyBtn) {
-  const ctaObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      emergencyBtn.classList.toggle('show', !entry.isIntersecting);
-      if (!entry.isIntersecting) updateOpenStatus(emergencyBtn);
-    });
-  }, { threshold: 0 });
-  ctaObserver.observe(heroBtn);
-}
-
-function updateOpenStatus(btn) {
-  const is247 = btn.dataset['247'] === '1';
-  const hoursRaw = btn.dataset.hours;
-  
-  if (is247) {
-    btn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
-    return;
-  }
-  
-  if (!hoursRaw) return;
-  
-  try {
-    const hours = JSON.parse(hoursRaw);
-    if (!hours || hours.length === 0) return;
-    
-    const now = new Date();
-    const dayNames = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
-    const today = dayNames[now.getDay()];
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-    
-    // Find today's hours
-    let todayHours = '';
-    for (const entry of hours) {
-      const parts = entry.split(': ');
-      if (parts.length >= 2 && parts[0].toLowerCase().trim() === today) {
-        todayHours = parts.slice(1).join(': ').trim();
-        break;
-      }
-    }
-    
-    if (!todayHours || todayHours.toLowerCase() === 'closed') {
-      btn.innerHTML = '📞 Call Now';
-      return;
-    }
-    
-    if (todayHours.toLowerCase().includes('24 hours') || todayHours.toLowerCase().includes('open 24 hours')) {
-      btn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
-      return;
-    }
-    
-    // Parse time range like "8:00 AM – 5:00 PM"
-    const timeMatch = todayHours.match(/(\d+):(\d+)\s*(AM|PM)\s*[–-]\s*(\d+):(\d+)\s*(AM|PM)/i);
-    if (timeMatch) {
-      let [, openH, openM, openAmPm, closeH, closeM, closeAmPm] = timeMatch;
-      openH = parseInt(openH); openM = parseInt(openM);
-      closeH = parseInt(closeH); closeM = parseInt(closeM);
-      
-      if (openAmPm.toUpperCase() === 'PM' && openH !== 12) openH += 12;
-      if (openAmPm.toUpperCase() === 'AM' && openH === 12) openH = 0;
-      if (closeAmPm.toUpperCase() === 'PM' && closeH !== 12) closeH += 12;
-      if (closeAmPm.toUpperCase() === 'AM' && closeH === 12) closeH = 0;
-      
-      const openMinutes = openH * 60 + openM;
-      const closeMinutes = closeH * 60 + closeM;
-      
-      if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
-        btn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
-      } else {
-        btn.innerHTML = '📞 Call Now';
-      }
-    }
-  } catch(e) {}
+ const ctaObserver = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+ emergencyBtn.classList.toggle('show', !entry.isIntersecting);
+ });
+ }, { threshold: 0 });
+ ctaObserver.observe(heroBtn);
+ // Check if open based on hours
+ (function() {
+ var now = new Date();
+ var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+ var today = days[now.getDay()];
+ var mins = now.getHours() * 60 + now.getMinutes();
+ function parseT(s) {
+ var m = s.match(/(\d+):(\d+)\s*(am|pm)/i);
+ if (!m) return null;
+ var h = +m[1], mn = +m[2];
+ if (m[3].toLowerCase()==='pm' && h<12) h+=12;
+ if (m[3].toLowerCase()==='am' && h===12) h=0;
+ return h*60+mn;
+ }
+ var hrs = document.querySelectorAll('.hours-day');
+ var open = false;
+ hrs.forEach(function(el) {
+ if (el.querySelector('.day').textContent.trim() === today) {
+ var t = el.querySelector('.time').textContent.trim();
+ if (!t || t === 'Closed') return;
+ if (t === '24 hrs' || t === '24/7' || t === 'Open 24 hours') { open = true; return; }
+ var parts = t.split('\u2013');
+ if (parts.length < 2) parts = t.split('-');
+ if (parts.length === 2) {
+ var o = parseT(parts[0].trim()), c = parseT(parts[1].trim());
+ if (o !== null && c !== null && mins >= o && mins <= c) open = true;
+ }
+ }
+ });
+ if (open) {
+ emergencyBtn.innerHTML = '<span class="pulse-dot"></span> 🟢 Open · 📞 Call Now';
+ }
+ })();
 }
 }, 3000);
 </script>
 
+<script>
+(function(){var c=document.getElementById('anim-canvas');if(!c)return;var ctx=c.getContext('2d');var W,H;
+function resize(){var r=c.getBoundingClientRect();if(!r||r.width<10){setTimeout(resize,200);return};W=c.width=r.width*2;H=c.height=r.height*2;c.style.width=r.width+"px";c.style.height=r.height+"px";if(!sd){sd=true;setup()}}
+window.addEventListener('resize',resize);var sd=false;
+function setup(){
+var leaves=[];function Leaf(){this.x=-50;this.y=40+Math.random()*(H-100);this.w=18+Math.random()*26;this.h=9+Math.random()*16;this.speed=0.3+Math.random()*0.7;this.rot=Math.random()*6;this.rv=(Math.random()-0.5)*0.04;this.color='#'+['22c55e','16a34a','4ade80','86efac','bbf7d0'][Math.floor(Math.random()*5)];this.drift=Math.random()*5}
+Leaf.prototype.draw=function(){this.x+=this.speed;this.y+=Math.sin(this.x*0.02+this.drift)*0.6;this.rot+=this.rv;if(this.x>W+60)this.x=-60;
+ctx.save();ctx.globalAlpha=0.7;ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=10;
+ctx.beginPath();ctx.ellipse(0,0,this.w/2,this.h/2,0,0,7);ctx.fill();
+ctx.fillStyle='rgba(255,255,255,0.12)';ctx.beginPath();ctx.ellipse(-this.w*0.1,-this.h*0.1,this.w*0.15,this.h*0.15,0,0,7);ctx.fill();ctx.restore()};
+for(var i=0;i<10;i++)leaves.push(new Leaf());
+var flowers=[];function Flower(){this.x=60+Math.random()*(W-120);this.y=80+Math.random()*(H-130);this.petals=6+Math.floor(Math.random()*5);this.r=14+Math.random()*20;this.color='#'+['ec4899','d946ef','f43f5e','f97316','fbbf24','38bdf8'][Math.floor(Math.random()*6)];this.bud=0;this.phase=Math.random()*6}
+Flower.prototype.draw=function(t){if(this.bud<1)this.bud+=0.005;
+ctx.save();ctx.globalAlpha=Math.min(1,this.bud);ctx.translate(this.x,this.y);
+for(var i=0;i<this.petals;i++){var a=(i/this.petals)*7+Math.sin(t*0.3+this.phase)*0.15;ctx.save();ctx.rotate(a);
+ctx.fillStyle=this.color;ctx.shadowColor=this.color;ctx.shadowBlur=15;
+ctx.beginPath();ctx.ellipse(0,-this.r*this.bud,this.r*0.35*this.bud,this.r*0.6*this.bud,0,0,7);ctx.fill();ctx.restore()}
+ctx.fillStyle='#fbbf24';ctx.shadowBlur=5;ctx.beginPath();ctx.arc(0,0,this.r*0.3*this.bud,0,7);ctx.fill();ctx.restore()};
+setInterval(function(){if(flowers.length<10)flowers.push(new Flower())},2000+Math.random()*3000);
+var butterflies=[];function Butterfly(){this.x=Math.random()*W;this.y=Math.random()*H*0.6;this.targetX=Math.random()*W;this.targetY=Math.random()*H*0.6;this.speed=0.5+Math.random()*0.8;this.size=10+Math.random()*14;this.flap=0;this.opacity=0.6+Math.random()*0.3}
+Butterfly.prototype.draw=function(t){this.flap+=0.08;var dx=this.targetX-this.x;var dy=this.targetY-this.y;var dist=Math.sqrt(dx*dx+dy*dy);
+if(dist>5){this.x+=dx*0.012*this.speed;this.y+=dy*0.012*this.speed}else{this.targetX=Math.random()*W;this.targetY=Math.random()*H*0.6}
+ctx.save();ctx.globalAlpha=this.opacity;ctx.translate(this.x,this.y);var angle=Math.atan2(dy,dx);
+ctx.save();ctx.rotate(angle+Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx.shadowColor='#f472b6';ctx.shadowBlur=10;
+ctx.beginPath();ctx.ellipse(0,-this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
+ctx.save();ctx.rotate(angle-Math.sin(this.flap)*0.4);ctx.fillStyle='#f472b6';ctx.shadowBlur=10;
+ctx.beginPath();ctx.ellipse(0,this.size*0.45,this.size*0.9,this.size*0.55,0,0,7);ctx.fill();ctx.restore();
+ctx.fillStyle='#4a044e';ctx.beginPath();ctx.ellipse(0,0,2,this.size*0.25,0,0,7);ctx.fill();ctx.restore()};
+setInterval(function(){if(butterflies.length<4)butterflies.push(new Butterfly())},3000+Math.random()*5000);
+
+var rays=[];for(var i=0;i<5;i++){rays.push({x:Math.random()*W,angle:-0.5-Math.random()*0.3,speed:0.08+Math.random()*0.2,opacity:0.03+Math.random()*0.03})}
+function animate(t){t=t||0;requestAnimationFrame(animate);ctx.clearRect(0,0,W,H);
+
+for(var i=0;i<leaves.length;i++)leaves[i].draw();
+for(var i=0;i<flowers.length;i++){if(flowers[i].bud<0.01)continue;flowers[i].draw(t)}
+for(var i=0;i<butterflies.length;i++)butterflies[i].draw(t);
+for(var i=0;i<rays.length;i++){var r=rays[i];r.angle+=r.speed*0.002;
+ctx.save();ctx.globalAlpha=r.opacity;ctx.fillStyle='#fbbf24';ctx.shadowColor='#fbbf24';ctx.shadowBlur=60;
+ctx.beginPath();ctx.ellipse(r.x,H,r.angle*H,50,0,0,Math.PI);ctx.fill();ctx.restore()}
+}
+setTimeout(animate,300)}
+setTimeout(resize,200)})();
+</script>
 </body>
 </html>
